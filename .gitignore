@@ -1,0 +1,5 @@
+plan
+*.aux
+main.*
+!main.tex
+!main.pdf
