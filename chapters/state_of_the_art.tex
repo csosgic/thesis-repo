@@ -9,20 +9,20 @@ Amidst dynamic changes in the energy landscape, the emergence of the “smart gr
 
 
 \section{Definition smart grid}
-The Smart Grid is a comprehensive electrical network that employs cutting-edge communication technologies, computational intelligence, and cybersecurity protocols throughout the entire process of generating, transmitting, distributing, and consuming electricity. Its objective is to establish a system that is environmentally friendly, secure, dependable, adaptable, energy-efficient, and environmentally sustainable. While the ultimate vision of the Smart Grid is ambitious, its practical implementation demands careful evaluation of costs, rigorous testing, and validation. Introducing new functionalities can occur autonomously, with each necessitating justification and a reasonable return on investment. The compatibility of open systems facilitates smooth integration into the Smart Grid once the technologies have been validated.\cite{gharavi2011smart}
- The National Institute of Standards and Technology (NIST), operating within the U.S. Department of Commerce, has classified the smart grid into seven distinct domains, as illustrated in Figure 1.1. A concise overview of these domains and their stakeholders is provided in Table 1.2.\cite{gopstein2021nist}
+The Smart Grid is a comprehensive electrical network that employs cutting-edge communication technologies, computational intelligence, and cybersecurity protocols throughout the entire process of generating, transmitting, distributing, and consuming electricity. Its objective is to establish a system that is environmentally friendly, secure, dependable, adaptable, energy-efficient, and environmentally sustainable. While the ultimate vision of the Smart Grid is ambitious, its practical implementation demands careful evaluation of costs, rigorous testing, and validation. Introducing new functionalities can occur autonomously, with each necessitating justification and a reasonable return on investment. The compatibility of open systems facilitates smooth integration into the Smart Grid once the technologies have been validated \cite{gharavi2011smart}.
+ The National Institute of Standards and Technology (NIST), operating within the U.S. Department of Commerce, has classified the smart grid into seven distinct domains, as illustrated in Figure \ref{fig:NIST}. A concise overview of these domains and their stakeholders is provided in Table \ref{table:domains}.\cite{gopstein2021nist}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{figures/nist.PNG}
 	\caption{The NIST Conceptual Model for SG \cite{gopstein2021nist}}
-	% \label{fig:example}
+	\label{fig:NIST}
 \end{figure}
 \begin{table}[h]
     \centering
  %%ffffff
     \input{tables/tableTwo.tex}
     \caption{Domains and their associated roles/services \cite{gopstein2021nist}}
-    % \label{table:domains}
+    \label{table:domains}
 \end{table}
 \section{Smart grid attributes}
 Many smart grid advocates cite some or all of its following attributes as representative of its promise:
@@ -47,24 +47,24 @@ Many smart grid advocates cite some or all of its following attributes as repres
 
 
 \section{Differences between Traditional grid and Smart grid }
-Table 1.1 offers a thorough comparison of the conventional power grid with the smart grid. In contrast to the traditional grid where customers play a passive role, the smart grid actively engages them through bi-directional communication technologies. For instance, rooftop photovoltaic solar panels produce electricity during the day, enabling customers to sell surplus energy back to the grid. At night, these panels continue to power home appliances as usual. Moreover, the smart grid incorporates innovative technologies like distributed generation, electric vehicle charging and discharging, and Flexible Alternating Current Transmission Systems (FACTS) to improve energy distribution and management.\cite{zhang2014smart}
+Table \ref{tab:comparison} offers a thorough comparison of the conventional power grid with the smart grid. In contrast to the traditional grid where customers play a passive role, the smart grid actively engages them through bi-directional communication technologies. For instance, rooftop photovoltaic solar panels produce electricity during the day, enabling customers to sell surplus energy back to the grid. At night, these panels continue to power home appliances as usual. Moreover, the smart grid incorporates innovative technologies like distributed generation, electric vehicle charging and discharging, and Flexible Alternating Current Transmission Systems (FACTS) to improve energy distribution and management.\cite{zhang2014smart}
 \begin{table}[h]
   
 	\caption{Comparison between conventional grid and smart grid \cite{miller2008understanding}}
     \input{tables/tableOne.tex}
-	\label{tab:my_label}
+	\label{tab:comparison}
 \end{table}
 
 
 \section{Components of the Smart Grid }  
 
 \subsection{Smart Meters}
-The interplay between smart meters and smart grids is depicted in Figure 1.1. From the perspective of the smart grid, the applications primarily revolve around leveraging smart meters to facilitate the coordination of various electrical devices, thereby achieving a dependable power system. Simultaneously, these applications strive to enhance the performance and efficiency of smart metering. These objectives align with the defining characteristics of smart grids, which drive the advancement of smart meter technologies.\cite{chen2023control}
+The interplay between smart meters and smart grids is depicted in Figure \ref{fig:SmartMeter}. From the perspective of the smart grid, the applications primarily revolve around leveraging smart meters to facilitate the coordination of various electrical devices, thereby achieving a dependable power system. Simultaneously, these applications strive to enhance the performance and efficiency of smart metering. These objectives align with the defining characteristics of smart grids, which drive the advancement of smart meter technologies.\cite{chen2023control}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{figures/SmartMeter.PNG}
 	\caption{Applications from smart grid and smart meter perspectives. \cite{chen2023control}}
-	\label{fig:example}
+	\label{fig:SmartMeter}
 \end{figure}
 \subsection{Advanced Distribution Management Systems }
 An ADMS is a software platform designed to support the comprehensive suite of tasks related to managing and optimizing the distribution of electricity. It encompasses functions that automate outage recovery and enhance the effectiveness of the distribution grid. These functions being developed for electric utilities include fault location, isolation, and restoration; optimization of voltage and reactive power; energy conservation through voltage reduction; management of peak demand; as well as support for microgrids and electric vehicles \cite{avazov2016advanced}.
@@ -84,24 +84,40 @@ An ADMS is a software platform designed to support the comprehensive suite of ta
 \subsection{Smart Appliances and Devices}
 \subsection{Renewable Energy Integration}
 
-\section{Benefits of Smart Grid}  
+% \section{Benefits of Smart Grid}  
 \subsection{Increased Efficiency}
 \subsection{Improved Reliability}
 \subsection{Sustainability and Environmental Benefits}
 \subsection{Cost Savings}
 \subsection{Consumer Empowerment}
-\section{Challenges and Considerations }  
+\section{Challenges of smart grid }  
 \subsection{Cybersecurity}
-Without a shred of doubt, cybersecurity stands out as one of the foremost and intricate challenges confronting IoT devices. Sensors, devices, and networks connected to the internet are persistent targets for various online threats like probing, espionage, ransomware, theft, and potential destruction. Considering that an IoT-driven smart grid can encompass potentially millions of interconnected nodes spread across extensive geographic regions, it emerges as the most susceptible to substantial cyber assaults. Consequently, a cyber-attack on such a system would have devastating consequences, leading to significant financial losses and potentially bringing entire countries to a standstill. The diagram in Figure 1.3 illustrates the number of articles reviewed per year of publication and smart grids impacted by cyber-attacks. Hence, security stands as a major hurdle in both the deployment and operation of IoT-based smart grid networks.\cite{kimani2019cyber}.
+Without a shred of doubt, cybersecurity stands out as one of the foremost and intricate challenges confronting IoT devices. Sensors, devices, and networks connected to the internet are persistent targets for various online threats like probing, espionage, ransomware, theft, and potential destruction. Considering that an IoT-driven smart grid can encompass potentially millions of interconnected nodes spread across extensive geographic regions, it emerges as the most susceptible to substantial cyber assaults. Consequently, a cyber-attack on such a system would have devastating consequences, leading to significant financial losses and potentially bringing entire countries to a standstill. The diagram in Figure \ref{fig:attacks} illustrates the number of articles reviewed per year of publication and smart grids impacted by cyber-attacks. Hence, security stands as a major hurdle in both the deployment and operation of IoT-based smart grid networks.\cite{kimani2019cyber}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=15cm]{figures/attack.png}
+	\includegraphics[width=12cm]{figures/attack.png}
 	\caption{Estimate: cyber attacks will increase exponentially \cite{mdpi-link}}
-	% \label{fig:example}
+	\label{fig:attacks}
 \end{figure}
+\newpage
+\subsection{Data privacy}
+Privacy is a critical concern within smart grid networks, prompting significant questions about the creation of policies regarding user data privacy. These questions revolve around several key points: Who owns the customer data? How is access to and usage of customer data regulated? What measures exist to protect the privacy and security of customer data from potential risks like surveillance or illicit activities? Is it permissible to sell or transfer customer data, and under what circumstances and for whose benefit? In areas with retail choice, are measures necessary to ensure that competing electricity providers have equal access to customer data compared to the incumbent utility?
 
-\subsection{Data Privacy}
+In competitive environments among electricity providers, access to users' electricity usage patterns and behavioral information holds significant importance. Providers or their representatives may use this data to develop business strategies and create tailored packages or offers. In an open market scenario, some data may be disclosed after offers are made public, providing a level playing field for information access. However, if privacy is compromised beforehand, with specific user data available to only certain parties, these electricity providers could potentially gain unfair advantages. Therefore, effective privacy policies are essential to prevent the exploitation of unfair means in shaping business strategies.
+
+The integration of Information and Communication Technologies (ICTs) into smart grid operations introduces various privacy concerns. Depending on how a consumer uses and recharges electricity \cite{zeadally2013towards}.
+
 \subsection{Cost of Implementation:}
+
+Estimating Smart Grid costs poses challenges due to several factors. Integrating digital technology into Smart Grids introduces complexities, as the failure rates and life expectancy of embedded assets differ from traditional grid technologies. For instance, a substation transformer designed for 40 years may be coupled with information technology lasting 10, 15, or 20 years, necessitating careful cost considerations for upgrades. Additionally, the rapid obsolescence of digital tech complicates estimates, as advancing communications and computational capabilities may render Smart Grid components obsolete before their intended lifespan ends. 
+
+Moreover, the evolution of Smart Grid technologies is expected to outpace conventional tech in terms of cost reduction and advancements. However, uncertainties persist, particularly with new and unproven Smart Grid technologies. If their performance is subpar or degrades unexpectedly, it could jeopardize the entire technology's viability and business plan. As Smart Grid component costs decrease rapidly due to maturation and increased production, estimating replacement costs becomes challenging\cite{smartgrid}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{figures/cost.PNG}
+	\caption{Grid Component Costs \cite{smartgrid}}
+	\label{fig:costs}
+\end{figure}
 \subsection{Regulatory Frameworks}
 \subsection{Public Awareness and Education}
 \section{The Future of Smart Grids }  
