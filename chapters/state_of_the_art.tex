@@ -5,8 +5,8 @@
 Electricity grids, commonly referred to as “grids,” play a vital role in modern energy infrastructure. They facilitate power generation, transmission, distribution, and control. Over time, grids have evolved from localized systems to interconnected networks, adapting to meet increasing demands and technological advancements. These grids contribute significantly to economic and societal progress.
 
 Amidst dynamic changes in the energy landscape, the emergence of the “smart grid” presents transformative possibilities. Leveraging data, automation, and connectivity, smart grids enhance energy management and promote sustainability. In this chapter, we delve into the evolution of grid systems and explore the challenges and opportunities associated with smart grid technology, shaping the future of energy.
-\newpage
 
+\newpage
 
 \section{Definition smart grid}
 The Smart Grid is a comprehensive electrical network that employs cutting-edge communication technologies, computational intelligence, and cybersecurity protocols throughout the entire process of generating, transmitting, distributing, and consuming electricity. Its objective is to establish a system that is environmentally friendly, secure, dependable, adaptable, energy-efficient, and environmentally sustainable. While the ultimate vision of the Smart Grid is ambitious, its practical implementation demands careful evaluation of costs, rigorous testing, and validation. Introducing new functionalities can occur autonomously, with each necessitating justification and a reasonable return on investment. The compatibility of open systems facilitates smooth integration into the Smart Grid once the technologies have been validated \cite{gharavi2011smart}.
@@ -19,11 +19,14 @@ The Smart Grid is a comprehensive electrical network that employs cutting-edge c
 \end{figure}
 \begin{table}[h]
     \centering
- %%ffffff
+
     \input{tables/tableTwo.tex}
     \caption{Domains and their associated roles/services \cite{gopstein2021nist}}
     \label{table:domains}
 \end{table}
+
+
+
 \section{Smart grid attributes}
 Many smart grid advocates cite some or all of its following attributes as representative of its promise:
 \firmlist
@@ -55,9 +58,88 @@ Table \ref{tab:comparison} offers a thorough comparison of the conventional powe
 	\label{tab:comparison}
 \end{table}
 
+\section{Major systems}
 
+
+\subsection{Smart infrastructure system}
+The smart infrastructure system consists of three main components: the smart energy subsystem, the smart information subsystem, and the smart communication subsystem. Within the smart energy subsystem, activities such as electricity generation, transmission, distribution, and consumption are integrated. The smart information subsystem includes functions like smart metering and advanced monitoring and management of the smart grid network. The smart communication subsystem facilitates wired and wireless communication between networks, devices, and applications to establish connectivity throughout the network \cite{shafiullah2013smart}.
+\subsection{Smart management system}
+The smart grid's intelligent management system offers advanced services in monitoring and control. As innovative management, monitoring, and control applications evolve, smart grid technology becomes more sophisticated, contributing actively to the advancement of a sustainable power system. Within the smart management system are functions such as enhancing energy efficiency, balancing supply and demand, controlling emissions, reducing operational costs, and maximizing utility. This system utilizes modern machine learning and optimization tools to create a resilient and efficient smart management framework \cite{shafiullah2013smart}.
+\subsection{smart protection systems}
+The smart protection system within the smart grid offers services related to reliability, safeguarding against failures, and ensuring security and privacy. By incorporating advanced protection devices and monitoring tools, the system enhances the reliability, security, and privacy of the network. Alongside smart infrastructure planning, efficient management, and intelligent protection systems play a role in managing operations effectively, protecting against failures, and addressing cybersecurity and privacy concerns within the network. Figure \ref{fig:Classification} illustrates a typical technological framework of the smart grid \cite{shafiullah2013smart}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{figures/Classification.PNG}
+	\caption{Classification of the Smart Infrastructure System, the Smart Management System, and the Smart Protection
+	System \cite{fang2011smart}}
+	\label{fig:Classification}
+\end{figure}
+
+\newpage
+
+
+
+
+
+
+
+\section{Smart Grid Technologies }
+A smart grid employs a diverse array of technologies and communication networks to enhance the management of power generation, transmission, and distribution. It also provides customers with the ability to have real-time control over their energy consumption \cite{WhatIsSmartgrid}.
+\subsection{Major Smart Grid Technologies}
+\subsubsection{Advanced Demand Forecasting}
+Utilizing data analytics and machine learning (ML), advanced demand forecasting techniques produce forecasting reports through autoregressive integrated moving average (ARIMA) and various statistical methods.
+
+A crucial aspect of smart grid management, ARIMA forecasting predicts both annual electricity consumption and hourly electricity prices.
+
+Furthermore, ARIMA forecasting serves as an extra layer of verification, aiding in the identification of cyber intrusion attempts on smart meters used to measure electricity usage for residential and commercial consumers \cite{WhatIsSmartgrid}.
+\subsubsection{Advanced Metering Infrastructure (AMI)}
+Advanced Metering Infrastructure (AMI) is a unified system comprising communication networks, data management systems, and intelligent meters designed to enhance customer service, energy efficiency, and cost management.
+
+AMI facilitates two-way communication between customers and utilities, offering a wide array of advantages to the smart grid. These include forecasting consumption, improving revenue collection and theft detection, detecting faults and outages, measuring losses, and implementing time-based pricing \cite{WhatIsSmartgrid}.  
+\subsubsection{Big Data}
+Smart grid data possesses three fundamental characteristics: high velocity, extensive volume, and diverse variety. Managing this large volume of data in a timely manner with limited resources poses a significant challenge for smart grids. This is where big data analytics becomes pivotal, offering the potential to boost asset utilization, efficiency, system reliability, and customer satisfaction.
+
+Without big data analytics in the smart grid, the assessment of petabytes of data generated by smart grid devices would be impractical. Big data captures and analyzes unstructured data from various endpoints within a smart grid.
+
+Moreover, big data facilitates efficient cost reduction, optimal resource distribution, and improved customer service \cite{WhatIsSmartgrid}.
+\subsubsection{Distributed Energy Resources (DERs)}
+Distributed Energy Resources (DERs) supply energy and improve local reliability, enhancing grid stability and optimizing on-site fuel utilization.
+
+DERs encompass various technologies such as electric vehicles, solar panels, small natural gas generators, and controllable loads like electric water heaters and HVAC systems.
+
+Efficient integration of DERs enhances grid service quality and reliability. For instance, photovoltaic systems (PVs) utilize the photovoltaic effect to convert sunlight into electricity, which is then transformed into alternating current by an inverter. The primary advantage of PV systems is reduced utility bills due to decreased reliance on grid-provided electricity \cite{WhatIsSmartgrid}.
+\subsubsection{Non-intrusive Load Monitoring (NILM)}
+Non-intrusive load monitoring (NILM), also known as non-intrusive appliance load monitoring (NIALM), discerns the specific energy consumption of households and industrial sites.
+
+By disaggregating the total energy usage (from active appliances) into individual components and offering diagnostic insights, NILM aids in identifying energy-intensive or faulty appliances.
+
+Moreover, consumers can optimize the timing of usage for energy-intensive appliances to minimize costs, and monitor and control energy expenses based on their power consumption \cite{WhatIsSmartgrid}. 
+\subsubsection{Vehicle-to-Grid (V2G)}
+Also known as vehicle-grid integration (VGI), vehicle-to-grid (V2G) technology transfers unused power from a vehicle into the smart grid. An electric vehicle (EV) battery is a cost-efficient form of energy storage.
+
+ 
+
+V2G helps balance electricity consumption spikes and reduce overload on the power grid during peak hours.
+
+ 
+
+For example, V2G can feed energy (unused battery capacity) back to the power grid from an electric car’s battery to improve grid stability and maximize the benefits of renewable energy \cite{WhatIsSmartgrid}.
+
+ \subsection{Established and Emerging Smart Grid Communication Networks}
+ \subsubsection{HAN}
+ A smart meter supplies power to household appliances via the Home Area Network (HAN), which utilizes different technologies such as Bluetooth, Wireless Ethernet, Wired Ethernet, and Zigbee. The HAN links home appliances with the smart meter, which detects power usage and transmits this information to the server for billing purposes \cite{WhatIsSmartgrid}.
+ \subsubsection{NAN}
+ A Neighborhood Area Network (NAN) is an external access network that links distribution automation devices and smart meters to WAN gateways such as RF (radio frequency) collectors and field devices (like Intelligent Electronic Devices (IEDs)). NAN allows for customer data collection and facilitates communication within the WAN-premise area \cite{WhatIsSmartgrid}.
+ \subsubsection{WAN}
+ A wide area network (WAN) uses fiber optics, 3G/LTE (Long Term Evolution)/GSM (Global System for Mobile Communication), or WiMAX (Worldwide Interoperability for Microwave Access) for communication between a smart meter, suppliers, and the utility server. A smart meter sends notifications it receives (via HAN) from the devices to the suppliers using WAN \cite{WhatIsSmartgrid}. 
+ \subsubsection{LoRaWAN}
+ LoRa (Long Range) is a popular IoT (Internet of Things) technology known for its long-range capability and low-power wireless platform, making it well-suited for various applications including energy management, infrastructure efficiency, and disaster prevention.
+
+ Implementing smart electricity metering solutions and smart grid networks using the LoRaWAN® (Long Range Wide Area Network) protocol allows for improved understanding of power demand, efficient detection of power outages, enhanced connectivity, and identification of underperforming assets.
+ 
+ Additionally, LoRaWAN is globally compatible and ensures seamless transmission without interference for remote reading of heat meter consumption data \cite{WhatIsSmartgrid}.
 \section{Components of the Smart Grid }  
-
+There are many components, but will talk about the most important ones.
 \subsection{Smart Meters}
 The interplay between smart meters and smart grids is depicted in Figure \ref{fig:SmartMeter}. From the perspective of the smart grid, the applications primarily revolve around leveraging smart meters to facilitate the coordination of various electrical devices, thereby achieving a dependable power system. Simultaneously, these applications strive to enhance the performance and efficiency of smart metering. These objectives align with the defining characteristics of smart grids, which drive the advancement of smart meter technologies.\cite{chen2023control}
 \begin{figure}[h]
@@ -66,6 +148,7 @@ The interplay between smart meters and smart grids is depicted in Figure \ref{fi
 	\caption{Applications from smart grid and smart meter perspectives. \cite{chen2023control}}
 	\label{fig:SmartMeter}
 \end{figure}
+\newpage
 \subsection{Advanced Distribution Management Systems }
 An ADMS is a software platform designed to support the comprehensive suite of tasks related to managing and optimizing the distribution of electricity. It encompasses functions that automate outage recovery and enhance the effectiveness of the distribution grid. These functions being developed for electric utilities include fault location, isolation, and restoration; optimization of voltage and reactive power; energy conservation through voltage reduction; management of peak demand; as well as support for microgrids and electric vehicles \cite{avazov2016advanced}.
 
@@ -80,17 +163,23 @@ An ADMS is a software platform designed to support the comprehensive suite of ta
 % \item \textbf{  Rerouting Electricity: }When problems arise, ADMS reroutes electricity to minimize disruptions.
 
 % \end{itemize}
-\subsection{Communication Infrastructure}
-\subsection{Smart Appliances and Devices}
-\subsection{Renewable Energy Integration}
 
-% \section{Benefits of Smart Grid}  
-% \subsection{Increased Efficiency}
-% \subsection{Improved Reliability}
-% \subsection{Sustainability and Environmental Benefits}
-% \subsection{Cost Savings}
-% \subsection{Consumer Empowerment}
+
+\subsection{Super conducting cables}
+These components are utilized for transmitting electricity over extended distances and employing automated monitoring and analysis tools. These tools have the capability to identify faults independently or predict potential cable failures by analyzing real-time data, weather conditions, and the history of outages \cite{elprocus_smartgrid}.
+\subsection{Circuit breakers}
+The circuit breaker, a safety-conscious middle-aged individual, safeguards the power system. It evaluates smart grid scenarios against safety standards, offering recommendations. Despite occasional differences, both the smart grid and circuit breakers recognize their mutual importance. Their relationship ensures the power system’s safe and stable operation.
+
+Smart Grid occasionally proposes innovative features or adjustments to the power system. However, the breaker gently dissuades excessive risk-taking, emphasizing safety. Through discussions and disputes, they strike a balance, ensuring reliable electricity for our lives \cite{linkedin_smartgrid_circuitbreaker}.
+\subsection{Collector nodes}
+
+Collector nodes are pivotal in the Smart Grid, serving as points of data collection and distribution between energy suppliers and customers. They enable a two-way communication network within the grid, relaying information from customer premises to the utility control center and transmission/distribution substations. Collector nodes facilitate efficient monitoring and management of energy usage \cite{cunjiang2012architecture}.
+
 \section{Challenges and Considerations  }  
+\subsection{Stakeholder Engagement}
+At the early stages of smart grid implementations, stakeholders’ negative perceptions can derail even the most beneficial project, especially when the proponents fail to pay close attention to the educational aspects. Advocates need to be able explain and clearly identify the benefits of each component of the smart grid to the customers that are the potential key to service success \cite{el2014smart}.
+\subsection{Fear of obsolesce}
+As many technology users (computers, smart phones, etc.) are painfully aware, the adoption of new tools can open the door to new and additional costs that may only be borne by the eventual consumer. This fear can be addressed through the development of interoperability standards and backward compatibility of technologies \cite{el2014smart}.
 \subsection{Cybersecurity}
 Without a shred of doubt, cybersecurity stands out as one of the foremost and intricate challenges confronting IoT devices. Sensors, devices, and networks connected to the internet are persistent targets for various online threats like probing, espionage, ransomware, theft, and potential destruction. Considering that an IoT-driven smart grid can encompass potentially millions of interconnected nodes spread across extensive geographic regions, it emerges as the most susceptible to substantial cyber assaults. Consequently, a cyber-attack on such a system would have devastating consequences, leading to significant financial losses and potentially bringing entire countries to a standstill. The diagram in Figure \ref{fig:attacks} illustrates the number of articles reviewed per year of publication and smart grids impacted by cyber-attacks. Hence, security stands as a major hurdle in both the deployment and operation of IoT-based smart grid networks.\cite{kimani2019cyber}.
 \begin{figure}[h]
@@ -99,7 +188,7 @@ Without a shred of doubt, cybersecurity stands out as one of the foremost and in
 	\caption{Estimate: cyber attacks will increase exponentially \cite{mdpi-link}}
 	\label{fig:attacks}
 \end{figure}
-\newpage
+
 \subsection{Data privacy}
 Privacy is a critical concern within smart grid networks, prompting significant questions about the creation of policies regarding user data privacy. These questions revolve around several key points: Who owns the customer data? How is access to and usage of customer data regulated? What measures exist to protect the privacy and security of customer data from potential risks like surveillance or illicit activities? Is it permissible to sell or transfer customer data, and under what circumstances and for whose benefit? In areas with retail choice, are measures necessary to ensure that competing electricity providers have equal access to customer data compared to the incumbent utility?
 
@@ -120,10 +209,7 @@ Moreover, the evolution of Smart Grid technologies is expected to outpace conven
 \end{figure}
 \subsection{Regulatory Frameworks}
 Electric distribution systems across Europe are encountering significant hurdles stemming from climate change objectives, evolving market frameworks, and technological advancements. These factors will have a profound impact on the responsibilities of distribution system operators. The challenges' nature and magnitude are primarily influenced by Europe's vision and strategies regarding climate and energy. This research aims to identify which policies might pose obstacles to innovation in distribution grids and the adoption of advanced smart grid solutions developed within the UNITED-GRID project. Following an in-depth examination of emerging policy priorities within the energy and climate framework, as well as electricity market design, and subsequent consultations with three partner distribution system operators, five key barriers have been pinpointed. The findings indicate that ambitious decarbonisation targets and shifting expectations regarding the role of distribution system operators in the energy landscape necessitate more adaptable and efficient network management. However, rigid income frameworks, insufficient incentives for innovation, and regulatory uncertainties impede the modernisation of distribution systems. It can be inferred that these concerns heighten the risks for distribution system operators and must be taken into account by research initiatives and developers of smart grid solutions to successfully implement and achieve market adoption of the developed solutions \cite{rossi2020study}. 
-% \subsection{Public Awareness and Education}
-% \section{The Future of Smart Grids }  
-% \subsection{Distributed Generation}
-% \subsection{Energy Storage}
+
 \newpage
 \section*{Conclusion}
 The smart grid revolution is not a destination, but a continuous journey towards a more efficient, reliable, and sustainable energy future. While challenges exist, the potential benefits of the smart grid are undeniable. By embracing innovation, fostering collaboration, and empowering consumers, we can unlock the full potential of this transformative technology.
@@ -131,3 +217,4 @@ The smart grid revolution is not a destination, but a continuous journey towards
 A smarter grid paves the way for a future where clean energy sources like solar and wind power are seamlessly integrated, homes and businesses actively participate in energy management, and power outages become a rarity. It's a future where we have a more secure and sustainable energy infrastructure for generations to come.
 
 Let's continue exploring the exciting world of smart grids and work together to build a brighter energy future for all.
+
