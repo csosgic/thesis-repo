@@ -12,35 +12,75 @@ as the second line of defense in case encryption and authorization were unsucces
 
 
 
-\section{intrusion detection systems (IDS)}
-An intrusion detection system is a piece of hardware or software that is responsible for detecting suspicious and malicious activity, and in a network or an information system, the anomaly can either be reported to a systems administrator or saved to a security information and even management system (SIEM), the SIEM combines the output from multiple sources, then uses some filtering techniques to decide if the reported activity is malicious. \cite{1}
+\section{Intrusion detection systems (IDS)}
+An intrusion detection system is a piece of hardware or software that is responsible for detecting suspicious and malicious activity, and in a network or an information system, the anomaly can either be reported to a systems administrator or saved to a security information and even management system (SIEM), the SIEM combines the output from multiple sources, then uses some filtering techniques to decide if the reported activity is malicious. \cite{ids-def}
 
 
 
 
 
 
-\section{intrusion detection systems architecture}
-%file:///C:/Users/doo/Desktop/thesis/Securing%20the%20Smart%20Grid%20A%20Comprehensive%20Compilation%20of%20Intrusion%20Detection%20and%20Prevention%20Systems%20(PANAGIOTIS%20I.%20RADOGLOU-GRAMMATIKIS%20etc.).pdf
-page 6
-
-\section{intrusion detection systems classification}
-
-Intrusion detection systems are categorized into 2 categories based on the location of the detection, which are either network or host-based (HIDS or NIDS), There are also two primary methods of intrusion detection: signature-based and anomaly-based. \cite{2}
-
-https://onlinelibrary.wiley.com/doi/10.1002/ett.4150
 
 
-\subsection{Categories}
+\section{Intrusion detection systems architecture}
+Intrusion detection systems, like any complex system, are made of multiple interoperating components with a specific task assigned to each component. Although the functioning of an IDS changes vastly between different types of IDSs (diffrent in deployment or detection methods), they all share a common general architecture, which is composed of the following components as shown in Figure \ref{fig:arch_IDS} \cite{arch-IDS}:
+
+\firmlist
+\begin{itemize}
+	\item Data gathering components (sensor): tasked with collecting information from the monitored environment.
+	\item Detector (IDS engine): analyzes the data collected by the sensor to determine the presence of suspicious activity.
+	\item Knowledge base(database): the database that stores information collected previously by sensors about known attacks that allows the engine to determine the suspesious activity.
+	\item Configuration component: defines settings and the behavious of the system.
+	\item Response component: this component is responsible for responding to the detected intrusion and either attempts to prevent the intrusion (IPS) or reports it to a human administrator (IDS).
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/arch_IDS.png}
+	\caption{arch IDS}
+	\label{fig:arch_IDS}
+\end{figure}
+
+
+\section{Intrusion detection systems classification}
+
+
+
+Intrusion detection systems are classifeied according to 2 criterias of classification which as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
+
+\firmlist
+\begin{itemize}
+	\item deployment method:
+	\item detection method: 
+\end{itemize}
+
+\cite{ids-classification}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/IDS_classification.pdf}
+	\caption{IDS classification taxonomy}
+	\label{fig:IDS-classification-taxonomy}
+\end{figure}
 
 
 
 
+\subsection{Deployment methods}
+
+2 primary are HIDS and NDIS 
+
+some more specialized methods PIDS APIDS and hybrid
+https://www.ibm.com/topics/intrusion-detection-system
 
 
 \subsubsection{NIDS}
-Network intrusion detection systems are placed at the point closest to the start of the sub-network right after the firewall so it can have access to all inbound traffic to all devices on the network 
+Network intrusion detection systems are the most commonly used commercial IDS. They are usually placed at the start edge of the sub-network, right after the firewall (if one exists), so they can have access to all inbound traffic to all devices on the network \cite{NIST-IDS}. NIDS protects the networks from cyber attacks and threats by scanning and monitoring TCP/IP packets for known attack signatures and reporting them to the administrator \cite{NIDS-ip-tcp}
 
+Some benefits of using a NIDS are that a few well-placed NIDS can be enough to cover an entire large network. In addition, their deployment requires minimal refactoring of the network, meaning easy installation \cite{NIST-IDS}. But the downsides are that they cannot detect threats with inaccurately constructed attack signatures and cannot analyze encrypted traffic, and it is hard to work with networks operating at 10 Gbps \cite{NIDS-ip-tcp}.
+
+With a NIDS, one would ideally scan all inbound and outbound traffic; however, doing so might create a bottleneck that would impair the overall speed of the network.
 
 
 \begin{figure}[h]
@@ -53,7 +93,19 @@ Network intrusion detection systems are placed at the point closest to the start
 
 
 \subsubsection{HIDS}
-HIDS are placed in indevedule devices in a network and it monitors all incoming and outgoing traffic
+Unlike NIDS, HIDS run on individual devices in a network, making it's threat detection scope more focused. They monitor all incoming and outgoing traffic and alert the administrator if suspicious or malicious activity is detected.
+
+It is considered to be more reliable than NIDS because it has access to files in the operating system, and it can detect if a file has been tampered with by keeping snapshots of previous versions of those system files and comparing them to the current version to decide if it has been tampered with. \cite{NIST-IDS}
+
+This type of IDS uses 2 sources of information inside the device's operating system:
+
+\firmlist
+\begin{itemize}
+	\item system audit trails: operating system audit trails are created by the kernel making them very detailed because the kernel has access to everything in an OS. \cite{NIST-IDS}
+	\item system logs: less complex the system audit trails making them easier to understand. \cite{NIST-IDS}
+\end{itemize}
+
+
 
 \begin{figure}[h]
 	\centering
@@ -72,16 +124,31 @@ HIDS are placed in indevedule devices in a network and it monitors all incoming 
 
 
 \subsection{Detection methods}
-\subsubsection{anomaly-based IDS}
-\subsubsection{signature-based IDS}
-\subsubsection{hybrid IDS}
+there are 2 primary methodes of detection for IDS which are anomaly-based and signature-based which is also known as misuse intrusion detection or knowledge-based intrusion detection \cite{ids-classification}
+
+
+\subsubsection{Signature-based detection}
+SIDs define patterns in known cyberattacks and store them in a database as signatures. The SID then analyzes system activity and search for a pattern of suspicious activity that matches previously documented attacks's signatures. This method provides high detection capabilities against known attacks. even though it cannot detect new attacks.On top of that, the database of previous attacks is very large, and having to compare internet packets to this database is resource- and time-consuming. \cite{NIST-IDS}
+
+
+
+\subsubsection{Anomaly-based detection}
+
+
+\subsubsection{Hybrid detection}
 is in development
 
 
 
+\section{maybe comparison between methodes of detection and deployment}
+
 \section{maybe IDS vs IPS + IDPS}
 
 \section{maybe IDS usage in smart grid}
+
+\subsection{maybe IDS requirements}
+
+\subsection{maybe IDS importance}
 
 
 \section{conclusion}
