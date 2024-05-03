@@ -1,0 +1,33 @@
+\begin{tabular}{|L{1.2cm}C{7cm}R{7cm}|}  % sum=15.2cm (L=Left, C=Center, R=Right)
+	\hline
+	& Signature-based & Anomaly-based \\
+	Pros &
+	\firmlist
+	\begin{itemize}
+		\item simple and effective against know attacks
+		\item fewer false positives
+	\end{itemize}
+	&
+	\firmlist
+	\begin{itemize}
+		\item Ineffecitve againts new and unknown attacks
+		\item slow if the database is large
+		\item database needs to be cosntantly constanlty maintained and updated
+	\end{itemize}
+	\\
+
+	Cons &
+	\firmlist
+	\begin{itemize}
+		\item can detect new and unknown attacks
+		\item can provide data to Signature-based detection
+	\end{itemize}
+	&
+	\firmlist
+	\begin{itemize}
+		\item more false negatives
+		\item needs training to build normal behaviour models
+	\end{itemize}
+	\\
+	\hline
+\end{tabular}

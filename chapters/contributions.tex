@@ -14,6 +14,7 @@ as the second line of defense in case encryption and authorization were unsucces
 
 \section{Intrusion detection systems (IDS)}
 An intrusion detection system is a piece of hardware or software that is responsible for detecting suspicious and malicious activity, and in a network or an information system, the anomaly can either be reported to a systems administrator or saved to a security information and even management system (SIEM), the SIEM combines the output from multiple sources, then uses some filtering techniques to decide if the reported activity is malicious. \cite{ids-def}
+An IDS on its own cannot stop intrusions; it can only detect and report them. However, with its evolution, the intrusion prevention system (IPS) or intrusion detection and prevention system (IDPS) can counter an attack. \cite{ibm-ids}
 
 
 
@@ -25,6 +26,13 @@ An intrusion detection system is a piece of hardware or software that is respons
 \section{Intrusion detection systems architecture}
 Intrusion detection systems, like any complex system, are made of multiple interoperating components with a specific task assigned to each component. Although the functioning of an IDS changes vastly between different types of IDSs (diffrent in deployment or detection methods), they all share a common general architecture, which is composed of the following components as shown in Figure \ref{fig:arch_IDS} \cite{arch-IDS}:
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/arch_IDS.png}
+	\caption{IDS architecture \cite{arch-IDS}}
+	\label{fig:arch_IDS}
+\end{figure}
+
 \firmlist
 \begin{itemize}
 	\item Data gathering components (sensor): tasked with collecting information from the monitored environment.
@@ -34,24 +42,15 @@ Intrusion detection systems, like any complex system, are made of multiple inter
 	\item Response component: this component is responsible for responding to the detected intrusion and either attempts to prevent the intrusion (IPS) or reports it to a human administrator (IDS).
 \end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=400px]{figures/arch_IDS.png}
-	\caption{arch IDS}
-	\label{fig:arch_IDS}
-\end{figure}
 
 
 \section{Intrusion detection systems classification}
-
-
-
-Intrusion detection systems are classifeied according to 2 criterias of classification which as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
+Intrusion detection systems are classified according to two criteria of classification, which are as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
 
 \firmlist
 \begin{itemize}
-	\item deployment method:
-	\item detection method: 
+	\item deployment method
+	\item detection method
 \end{itemize}
 
 \cite{ids-classification}
@@ -86,7 +85,7 @@ With a NIDS, one would ideally scan all inbound and outbound traffic; however, d
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=300px]{figures/NIDS.png}
-	\caption{NIDS \cite{HIDS-and-NIDS-geeksforgeeks}}
+	\caption{NIDS \cite{geeksforgeeks}}
 	\label{fig:NIDS}
 \end{figure}
 
@@ -110,34 +109,60 @@ This type of IDS uses 2 sources of information inside the device's operating sys
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=300px]{figures/HIDS.png}
-	\caption{HIDS \cite{HIDS-and-NIDS-geeksforgeeks}}
+	\caption{HIDS \cite{geeksforgeeks}}
 	\label{fig:HIDS}
 \end{figure}
 
 
 
-\subsubsection{PIDS}
-\subsubsection{APIDS}
-\subsubsection{Hybrid IDS}
+\subsubsection{Other types of IDS}
+uncommon types with specific functions usally used togther with NIDS or HIDS to augment thier detection capabilities
+
+\firmlist
+\begin{itemize}
+	\item Protocol intrusion detection system (PIDS): this type of IDS monitors the protocol in use (like HTTP or HTTPS) between the server and the client. PIDS is usually placed at the front end of the server. \cite{geeksforgeeks}
+
+
+	\item Application protocol detection system (APIDS): specialized in application security, it analyzes the packets of application-specific protocols (like MySQL) to determine the presence of suspicious activity. APIDS are usually placed on groups of servers. \cite{geeksforgeeks}
+	
+
+	\item hybrid detection system: it is a combination of two or more of any of the previously defined IDSs. It is more reliable than any individual IDS because it has access to the data accessible to all of the used IDSs, providing it with a network-wide view.
+	\cite{geeksforgeeks}
+\end{itemize}
 
 
 
 
 \subsection{Detection methods}
-there are 2 primary methodes of detection for IDS which are anomaly-based and signature-based which is also known as misuse intrusion detection or knowledge-based intrusion detection \cite{ids-classification}
+there are 2 primary methodes of detection for IDS which are anomaly-based and signature-based (which is also known as misuse intrusion detection or knowledge-based intrusion detection). \cite{ids-classification}
+
 
 
 \subsubsection{Signature-based detection}
-SIDs define patterns in known cyberattacks and store them in a database as signatures. The SID then analyzes system activity and search for a pattern of suspicious activity that matches previously documented attacks's signatures. This method provides high detection capabilities against known attacks. even though it cannot detect new attacks.On top of that, the database of previous attacks is very large, and having to compare internet packets to this database is resource- and time-consuming. \cite{NIST-IDS}
+SIDs define patterns in known cyberattacks and store them in a database as signatures. The SID then analyzes system activity and search for a pattern of suspicious activity that matches previously documented attacks's signatures. This method provides high detection capabilities against known attacks. even though it cannot detect new attacks. On top of that, the database of previous attacks is very large, and having to compare internet packets to this database is resource- and time-consuming. \cite{NIST-IDS}
 
 
 
 \subsubsection{Anomaly-based detection}
+AIDs can identifi abnormal behavious in the enviroment it is used in, this type of IDS first observes and models the normal behaviours then compares the trffic to this model to determine the presnece of suspesious activity. the constructed model is created based on the data collected by observing the behaviour of the system over a specific period of time of normal operation. \cite{NIST-IDS}
+
+AIDs often lead to a lot of false negatives because the normal activity varies alot over time, althout it is better than SIDs in detecting new and unknown attacks. it can also be used to provide new data for the signature-based detection systems. \cite{NIST-IDS}
+
+
 
 
 \subsubsection{Hybrid detection}
 is in development
 
+\subsubsection{Signature-based VS Anomaly-based detection}
+table of pros and cons
+sigVSano.tex
+\begin{table}[h]
+	\centering
+	\caption{An example of tables}
+	\input{tables/sigVSano}
+	\label{tab:example}
+\end{table}
 
 
 \section{maybe comparison between methodes of detection and deployment}
