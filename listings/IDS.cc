@@ -10,6 +10,8 @@ pair<int, int> data_rate_peer_to_peer_safe_range(20000000, 60000000);
 pair<int, int> delay_peer_to_peer_safe_range(1, 5);
 pair<int, int> data_rate_cluster_safe_range(5000000, 15000000);
 pair<int, int> delay_cluster_safe_range(1, 5);
+
+
 bool network_intrusion_detection (
     int data_rate_peer_to_peer,
     int delay_peer_to_peer,
