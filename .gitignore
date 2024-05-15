@@ -3,3 +3,8 @@ plan
 main.*
 !main.tex
 !main.pdf
+
+
+main2.*
+!main2.tex
+!main2.pdf

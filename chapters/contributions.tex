@@ -152,7 +152,7 @@ AIDs often lead to a lot of false negatives because the normal activity varies a
 
 
 \subsubsection{Hybrid detection}
-is in development
+Hybrid IDS uses both Signature based and anomaly based detection althout it's not widely used because it is still in development
 \clearpage
 
 \subsubsection{Signature-based VS Anomaly-based detection}
@@ -169,25 +169,86 @@ sigVSano.tex
 
 
 \section{Evolutions of IDS: IPS/IDPS}
-The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IPS, also known as IDPS.
+The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitores the activity of a network or a host scanning for attacks or malicious acitvity, the diffrence beween them is that IDPS can activly block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack. \cite{NIST-IDPS}
 
-IPS types
-\firmlist
+
+
+\section{IDPS/IDPS classification}
+just like IDS, IDPS is calssified according to two criterias: deployment method and detection method.
+
+\subsection{Deployment methods}
+IPS Deployment methodes
+\subsubsection{Network-based Prevention System (NIPS)}
+\subsubsection{Wireless-based Prevention System (WIPS)}
+\subsubsection{Host-based Prevention System (HIPS)}
+\subsubsection{Network Behaviour Analysis (NBA) System}
 \begin{itemize}
-	\item NIPS
-	\item WIPS
-	\item HIPS
-	\item NBA
+	\item Network-based Prevention System (NIPS): Monitors all traffic on the network to detect malicious activity and block it, NIPS has logging, detection and prevention capabilities.
+	\item Wireless-based Prevention System (WIPS): 
+	\item Host-based Prevention System (HIPS): 
+	\item Network Behaviour Analysis (NBA) System: 
 \end{itemize}
 
-IPS detection methodes
 
-\firmlist
+\subsection{detection methods}
+
+the same as IDS with stateful protocol analysis beign exclusive to IDPS, IDPS usually use multiple detection methodes at the same time to broaden it's detection rates. \cite{NIST-IDPS}
+
+IDPS has 3 primary detection methodes:
+
+
 \begin{itemize}
-	\item signature based
-	\item statistical anomaly based
-	\item stateful protocol abalasys 
+	\item Signature-based: Signature based detection is fairly similar to that of IDS with the diffrence beign that IDPS is capable of blocking or countring the detected intrusion
+	\item Anomaly-based: tyhe same thing applies to Anomaly-based detection as the detection phase is the same between IDS and IDPS
+	\item stateful protocol analysis: Stateful protocol analysis is a method used in Intrusion Detection and Prevention Systems (IDPS) to compare predefined profiles of normal protocol activity against observed events, aiming to detect deviations. Unlike anomaly-based detection, which relies on specific profiles, stateful protocol analysis uses universal profiles developed by vendors to define how protocols should be used. This approach involves tracking the state of network, transport, and application protocols, allowing the IDPS to understand the protocol's state transitions. For instance, in a File Transfer Protocol (FTP) session, users in the unauthenticated state should only execute basic commands like viewing help information or providing login credentials. By pairing requests with responses, the IDPS can verify the success of authentication attempts and differentiate between suspicious and benign actions based on the protocol's expected behavior in different states. \cite{NIST-IDPS19-20}
 \end{itemize}
+
+
+
+
+
+
+
+
+
+\section{cyberattacks on smart grid and thier classification}
+the Smart grid is suseptibale to a wide variaty of cyberattacks like malicious code, jamming, spoofing, injections, traffic evesdropping, and social engineering jsut to name a few
+
+on this project we will be looking at some of the most commonly used attacks
+
+https://arxiv.org/pdf/2207.07738 page 13
+\subsection{cyberattack types}
+\subsubsection{jamming attacks}
+\begin{itemize}
+	\item DDos
+\end{itemize}
+
+\subsubsection{Malicious code}
+\begin{itemize}
+	\item Exploit kits:
+	\item Viruses:
+	\item Worms:
+	\item Trojans:
+	\item Malware:
+\end{itemize}
+
+\subsubsection{injection attacks}
+\begin{itemize}
+	\item Malicious code injection!
+	\item Malicious data injection:
+\end{itemize}
+
+\subsubsection{replay of messages}
+
+
+categories
+	variants
+	assets effected
+
+attacks - thier target - thier consequences - some solutions maybe
+
+
+
 
 \section{maybe IDS usage in smart grid}
 required to be able to do :
@@ -223,3 +284,55 @@ required to be able to do :
 
 
 \chapter{Implementation} \label{chap:Implementation}
+\section{Introdution}
+
+
+
+\section{Case study description}
+attacks and thier targets and consequences in the simulation
+
+
+
+\section{tools used}
+
+\subsection{smart grid simulation}
+we use GridAttackSim co simulation which was created by Cyber Range Organization and Design (CROND) NEC-endowed chair at the Japan Advanced Institute of Science and Technology (JAIST) in Ishikawa, Japan..........
+show the architecture of the gridattacksim figure
+
+we mainly used 1 topologie in this simulation 13node73houses
+\firmlist
+\begin{itemize}
+	\item virtual box
+	\item ubuntu 18.04
+	\item FNCS framework
+	\item gridlab simulation
+	\item ns-3 network simulation
+	\item Python scripts
+\end{itemize}
+
+\subsection{programming langues used}
+\begin{itemize}
+	\item python3.11: for automating and running the simulation scenarios and attacks
+	\item + packages used
+	\item c++: for the ns3 network simulation 
+	\item bash scripts
+\end{itemize}
+
+
+\subsubsection{various config files for ns3, gridlab and FNCS}
+\begin{itemize}
+	\item .glm files for gridlab (also .player files)
+	\item .dot files for gridlab
+	\item .txt files (for FNCS) 
+	\item .zpl files (for FNCS) 
+\end{itemize}
+
+
+
+\section{descussing results of the implemented IDS (compare old graphes with new graphes)}
+
+
+
+
+
+\section{conclusion}
