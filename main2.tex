@@ -1,5 +1,11 @@
 \documentclass{masterthesis-uc2-en}
 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage[svgnames]{xcolor}
+\usepackage[tikz]{bclogo}
+
 
 %% Metadata
 \department{Department of Fundamental Computing and its Applications (IFA)}
@@ -17,11 +23,174 @@
 
 
 \frontmatter
-	\maketitlepage
 	\pagestyle{plain}
 	
-	\setcitestyle{numbers}
 	\hypersetup{citecolor=blue}
+	
+	\definecolor{dkgreen}{rgb}{0,0.6,0}
+	\definecolor{gray}{rgb}{0.5,0.5,0.5}
+	\definecolor{mauve}{rgb}{0.58,0,0.82}
+	
+	\lstset{frame=tb,
+	  language=c++,
+	  aboveskip=3mm,
+	  belowskip=3mm,
+	  showstringspaces=false,
+	  columns=flexible,
+	  basicstyle={\small\ttfamily},
+	  numbers=none,
+	  numberstyle=\tiny\color{gray},
+	  keywordstyle=\color{blue},
+	  commentstyle=\color{dkgreen},
+	  stringstyle=\color{mauve},
+	  breaklines=true,
+	  breakatwhitespace=true,
+	  tabsize=3
+	}
+	
+
+
+
+
+
+	\section{installation instrucions}
+	
+	
+	\firmlist
+	\begin{itemize}
+		\item ubuntu 18.04 required (https://releases.ubuntu.com/18.04/)
+		\item python3.6.9 installed by default should be enough
+	\end{itemize}
+	
+	
+	\begin{lstlisting}
+		sudo apt update && sudo apt upgrade
+		sudo apt install xterm
+	\end{lstlisting}
+
+	
+	do all the 6 commands below as i am not sure which one it needs 
+
+	\begin{lstlisting}
+		apt install python3-pip
+		pip3 install matplotlib graphviz pandas
+		sudo apt install python3-tk	
+	\end{lstlisting}
+
+
+	\begin{lstlisting}
+		apt install python-pip
+		pip install matplotlib graphviz pandas
+		sudo apt install python-tk
+	\end{lstlisting}
+
+
+
+	\subsection{installation FNCS, gridlab, ns3}
+	follow along with the  \path{installation_guide.md} in the project directory except for 1 needed change
+	when installing gridlab switch to the "feature/797" branch
+	\begin{lstlisting}
+	git checkout feature/797
+	\end{lstlisting}
+
+
+
+	\subsection{editing some files to get the simulation to run}
+
+
+
+	we will be using (13 Nodes 73 Houses)
+
+	changes:
+	\subsubsection{attack borker python file}
+	\path{attack_broker.py}
+	on line 103  
+
+	replace:
+	\begin{lstlisting}
+	pid = int(child.communicate()[0].split('\n')[0])
+	\end{lstlisting}
+	with:
+
+	\begin{lstlisting}
+		stdout_data, stderr_data = child.communicate()
+		pid = int(stdout_data.split(b'\n')[0])
+	\end{lstlisting}
+
+
+	\subsubsection{gridlab glm file}
+	\path{gridlab-D.glm}
+	remove on line	75
+	\begin{lstlisting}
+	object fncs_msg {
+     	name fncs_msg;
+ 	 		 parent Market_1;
+     	route "function:controller/submit_bid_state -> auction/submit_bid_state";
+     	option "transport:hostname localhost, port 5570";
+     	configure fncs_msg.txt;
+	}
+	\end{lstlisting}
+
+
+
+
+	
+	\section{the implementation}
+
+	\begin{itemize}
+		\item the IDS function is in this same repository in \path{listings/IDS.cc}
+		\item what the new \path{ns-3.cc} file in your project should be is \path{listings/new_ns-3.cc}
+		\item so copy this file (\path{listings/new_ns-3.cc}) into your \path{ns-3.ns} to test it
+	\end{itemize}
+
+
+	\begin{lstlisting}
+	\end{lstlisting}
+
+
+
+	\section{conclusion about the simulation}
+
+	the ns3 section gets stuck at the line     
+	\begin{lstlisting}
+		FncsSimulatorImpl *hb=new FncsSimulatorImpl();
+	\end{lstlisting}
+	tried removing that section but nothing diffrent happend
+
+
+
+	\begin{bclogo}[logo=\bcattention, couleurBarre=red, noborder=true, 
+		couleur=LightSalmon]{Important!}
+		i dont think this simulation is well designed to simulate a real cyberattack as they represent those attacks by just changing some configuration values in the simulation to demonstrate the potential effects of an attack therfore i dont think implemeting a real life example of an IDS is possible here
+	\end{bclogo}
+	
+
+
+
+
+	\section{conclusion}
+	in \path{Securing the Smart Grid A Comprehensive Compilation of Intrusion Detection and Prevention Systems (PANAGIOTIS I. RADOGLOU-GRAMMATIKIS etc.).pdf}
+
+	some of the methodes used to test SG security were 
+	\begin{itemize}
+		\item testing on a real life testbed and used real cyberattacks targeted at them to test IDS
+		\item some used snort IDS on real hardware
+	\end{itemize}
+
+	not much sources or data was provided on those tests or how to replicate them
+	
+
+
+	i searched for ways to simulate cyberattacks on a smart grid but i found nothing
+
+	i searched for other simulation but they are mostly either not implemented or incomplete
+
+
+	i think the remaining solution would be to either implement an IDS for gridlab or a WIPS but i have no hardware to test on or any simulation which leave the only option to try to implement it on my home router as if it is a smart grid component
+
+	would like to hear your opinion soon. thank you.
+
+
 
 	%\include{front/acknowledgments}
 	%\include{front/dedicate}  % Optional
@@ -38,22 +207,8 @@
 	%\listofalgorithms  % Optional
 
 \mainmatter
-	\pagestyle{fancy}
-	%\include{chapters/introduction}
-	\include{chapters/state_of_the_art}
-	\include{chapters/contributions}
-	%\include{chapters/conclusion}
 
-	% \include{chapters/template} % To remove in final version
-
-
-	%\chapter{Intrusion detection for smart grids}
-	%\include{chapters/chapter2/intro}
-	%\printbibliography
-	
 \backmatter
-	\bibliographystyle{unsrtnat}
-	\bibliography{bibliography}
-	%\include{front/acronyms}
+
 
 \end{document}
