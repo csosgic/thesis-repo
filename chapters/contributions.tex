@@ -166,10 +166,10 @@ sigVSano.tex
 \end{table}
 
 
-
+The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitores the activity of a network or a host scanning for attacks or malicious acitvity, the diffrence beween them is that IDPS can activly block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack.
 
 \section{Evolutions of IDS: IPS/IDPS}
-The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitores the activity of a network or a host scanning for attacks or malicious acitvity, the diffrence beween them is that IDPS can activly block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack. \cite{NIST-IDPS}
+The main drawback of an IDS is its inability to perform a response for the attack and actively prevent malicious activity. Because of that, a new system was developed to remove those vulnerabilities, and called IDPS, even though IDPS is similar to IDS when monitoring the network or host for the presence of attacks or malicious activity, it is diffrent from IDS as it can be used to prevent such intrusion automatically, for example it can drop malicious packets from the internet, block or ban the IP address or the suspected traffic to the host, server or application, etc, Additionally, it is also able to recognise reconnaissance, such as port and host scans, which would suggest a future possible attack. \cite{NIST-IDPS}
 
 
 
@@ -177,22 +177,22 @@ The biggest disadvantage of an IDS is its inability to react to attacks and acti
 just like IDS, IDPS is calssified according to two criterias: deployment method and detection method.
 
 \subsection{Deployment methods}
-IPS Deployment methodes
 \subsubsection{Network-based Prevention System (NIPS)}
+A network-based prevention system (NIPS) is a network-based intrusion prevention system. It checks all internet packets inbound and outbound in a network, making it possible to detect suspicious activity. these monitoring devices are placed at a strategic point right at the start of a sub-network, usually being right behind the firewall. NIPS might also be placed within the network to watch over movement of data from important assets such as critical data centers or any other device. \cite{IBM-IPS}
+
 \subsubsection{Wireless-based Prevention System (WIPS)}
+A wireless intrusion prevention system (WIPS) is designed to monitor wireless network protocols for any signs of suspicious activity, like unauthorized users or devices connected to the the wifi in question. Once a WIPS notices that an unknown entity has connected to a wireless network, it can automatically cut the connection. A WIPS can also be utilized to recognize misconfigured and unsecure devices operating on a wifi network, and set up even to intercept man-in-the-middle attacks.\cite{IBM-IPS}
+
 \subsubsection{Host-based Prevention System (HIPS)}
+A host-based intrusion prevention system (HIPS) is installed in a particular device such as a laptop or server and monitors only the traffic that comes and goes through it. HIPS are commonly paired up with NIPS to provide additional protection for critical assets. In addition, HIPS can stop malware from moving between devices on the same network, as may happen when ransomware is unleashed.\cite{IBM-IPS}
+
 \subsubsection{Network Behaviour Analysis (NBA) System}
-\begin{itemize}
-	\item Network-based Prevention System (NIPS): Monitors all traffic on the network to detect malicious activity and block it, NIPS has logging, detection and prevention capabilities.
-	\item Wireless-based Prevention System (WIPS): 
-	\item Host-based Prevention System (HIPS): 
-	\item Network Behaviour Analysis (NBA) System: 
-\end{itemize}
+A network behavior analysis (NBA) is a type of IPS that monitors the packets of a network, but unlike other types of IPS, this one focuses on high-level details like source/distonation IP addresses, ports, and the number of packets transmitted by those IP addresses. It uses an anomaly-based detection method that is effective in detecting and blocking abnormal behavior like DDoS attacks and communications with malware-infected devices.\cite{IBM-IPS}
 
 
 \subsection{detection methods}
 
-the same as IDS with stateful protocol analysis beign exclusive to IDPS, IDPS usually use multiple detection methodes at the same time to broaden it's detection rates. \cite{NIST-IDPS}
+detection methods are the same in IPS as in IDS with stateful protocol analysis beign exclusive to IDPS, IDPS usually uses multiple detection methodes at the same time to broaden it's detection rates. \cite{NIST-IDPS}
 
 IDPS has 3 primary detection methodes:
 
@@ -200,7 +200,9 @@ IDPS has 3 primary detection methodes:
 \begin{itemize}
 	\item Signature-based: Signature based detection is fairly similar to that of IDS with the diffrence beign that IDPS is capable of blocking or countring the detected intrusion
 	\item Anomaly-based: tyhe same thing applies to Anomaly-based detection as the detection phase is the same between IDS and IDPS
-	\item stateful protocol analysis: Stateful protocol analysis is a method used in Intrusion Detection and Prevention Systems (IDPS) to compare predefined profiles of normal protocol activity against observed events, aiming to detect deviations. Unlike anomaly-based detection, which relies on specific profiles, stateful protocol analysis uses universal profiles developed by vendors to define how protocols should be used. This approach involves tracking the state of network, transport, and application protocols, allowing the IDPS to understand the protocol's state transitions. For instance, in a File Transfer Protocol (FTP) session, users in the unauthenticated state should only execute basic commands like viewing help information or providing login credentials. By pairing requests with responses, the IDPS can verify the success of authentication attempts and differentiate between suspicious and benign actions based on the protocol's expected behavior in different states. \cite{NIST-IDPS19-20}
+	\item Stateful protocol analysis applies the technique of comparing observed user behavior with predefined profiles that define what is regarded as normal activity. What sets it apart from anomaly-based detection is that stateful protocol analysis employs vendor-specific profiles which define normal behavior of a protocol. In this type of IPS, network, transport, and application layer protocol states will be tracked in order for the Intrusion Detection Prevention System (IDPS) to understand the state transitions. Consequently, when a user logs into an FTP session in an unauthenticated state, he can only execute basic commands such as viewing help information or providing login credentials. As a result, this allows the Intrusion Detection and Prevention System to differentiate between suspicious and benign actions by checking whether they conform to what is expected at that particular point or not after pair requests with responses and successfully authenticating. \cite{NIST-IDPS19-20}
+	
+
 \end{itemize}
 
 
@@ -218,23 +220,33 @@ on this project we will be looking at some of the most commonly used attacks
 
 https://arxiv.org/pdf/2207.07738 page 13
 \subsection{cyberattack types}
-\subsubsection{jamming attacks}
+\subsubsection{Denial-of-service attack}
+A denial-of-service attack is an attack in which the perpetrator sends a large amount of traffic to the target to overload it and render a service or a server incapable of processing legitimate user requests. \cite{dos}, some types of denial of service attacks are:
+
+	
 \begin{itemize}
-	\item DDos
+	\item SYN flood: This happens when the attacker sends a 3-way handshake request without completing it, leaving the server waiting for a response and wasting time and resources that could be used by a legitimate user. \cite{dos}
+	\item smurf attack: the attacker sends ICMP (Internet Control Message Protocol) broadcast packets to some hosts in the network with a spoofed source IP address that is the IP of the target, those hosts would then respond to the spoofed IP address, flooding the target with those responses. This usually happens because of a misconfiguration of the devices on the network. \cite{dos}
 \end{itemize}
+
+Another version of DoS attacks is the distributed denial-of-service attack (DDoS), and what sets it apart from a normal DoS attack is the number of devices used in attack. DDoS usually leverages the use of botnets, which are infected machines controlled by the attacker. Having more devices means the ability to send an even larger amount of traffic to the target and also makes it harder to identify the attacker. \cite{dos}
+	
 
 \subsubsection{Malicious code}
 \begin{itemize}
-	\item Exploit kits:
-	\item Viruses:
-	\item Worms:
-	\item Trojans:
-	\item Malware:
+	\item Malware: Malware, which stands for malicious software, is a computer- and user-harming program that steals information, corrupts files, or disrupts computers. Its wide presence greatly threatens the security of computers, thus hindering network growth and targeting network-based applications. Malware makers keep upgrading their tactics to avoid being detected by using encryption and morphing techniques such as polymorphism and metamorphism. Signature-based detection methods work well with known malware but struggle with new ones, especially those that are polymorphic. On the other hand, heuristic-based detection usually gives false negatives and positives despite its ability to identify both new and existing malicious programs. Therefore, machine-learning algorithms combined with data-mining techniques are incorporated into existing approaches for fighting against ever-changing malware threats in order to enhance the accuracy of detection. \cite{malware} Malware has multiple types. some of which are:
+
+	\begin{itemize}
+	\item Viruses: Viruses need a host program or file to infect and propagate in a system. They remain dormant until the host is executed; then, they insert their code into other programs, copy themselves, damage files and spread to more devices. Viruses depend on human interaction for their activation and spreading from one computer to another. some of the consequences of this type of malware are performance issues, data or money loss, privacy invasion, and large-scale and nation-state attacks. \cite{virusVSworm}
+	\item Worms: Worms are independent programs which do not require any hosts. They can reproduce themselves and propagate automatically in a system without being activated by humans leading them to spread very fast often throughout a local network, sometimes at exponential rates. Security vulnerabilities may allow worms into a system without user's consent. Worms are generally considered more dangerous than viruses due to their ability to spread more quickly and without human interaction.\cite{virusVSworm}
+	\item Trojans: A trojan horse usually apears as a harmless piece of software, once it is installed on a system it is a  dangerous malware. This malicious application often disguises as a legitimate file in email attachments or free software, waiting for the user to download them or click on them. Once infiltrated, the Trojan can carry out multiple functions as coded by it's author. The infection occurs after a user downloads a file containing the server side of the malicious software, which is then set up once it has been downloaded, the attacker spams emails to a lot of users with a torjan horse attached for download hoping those users will download it. Infected systems can infect other devices, forming a botnet.\cite{torjanhorse}
+	\end{itemize}
+	\item Exploit kits: an exploit kit is used by cyber criminals to identify vulnerabilities in software or an operating system, then upload malicious code and execute it on their device. Those kits automatically exploit software vulnerabilities, often because the software is outdated. They work by redirecting the victim to compromised websites to identify vulnerabilities in their system and decides which exploits to use and uploading it to the user. If it succeeds, it downloads and executes a malicious piece of code that gives the attacker access to the victim's machine. \cite{exploit-kit}
 \end{itemize}
 
 \subsubsection{injection attacks}
 \begin{itemize}
-	\item Malicious code injection!
+	\item Malicious code injection:
 	\item Malicious data injection:
 \end{itemize}
 
@@ -264,9 +276,6 @@ required to be able to do :
 \end{itemize}
 
 
-\subsection{maybe IDS requirements}
-
-\subsection{maybe IDS importance}
 
 
 \section{conclusion}
@@ -295,7 +304,7 @@ attacks and thier targets and consequences in the simulation
 
 \section{tools used}
 
-\subsection{smart grid simulation}
+\subsection{smart grid co-simulation}
 we use GridAttackSim co simulation which was created by Cyber Range Organization and Design (CROND) NEC-endowed chair at the Japan Advanced Institute of Science and Technology (JAIST) in Ishikawa, Japan..........
 show the architecture of the gridattacksim figure
 
@@ -312,7 +321,7 @@ we mainly used 1 topologie in this simulation 13node73houses
 
 \subsection{programming langues used}
 \begin{itemize}
-	\item python3.11: for automating and running the simulation scenarios and attacks
+	\item python3: for automating and running the simulation scenarios and attacks
 	\item + packages used
 	\item c++: for the ns3 network simulation 
 	\item bash scripts
@@ -329,10 +338,17 @@ we mainly used 1 topologie in this simulation 13node73houses
 
 
 
+\section{testing IDS in a smart grid}
+
+\begin{itemize}
+	\item some people use thier systems simulated testbed
+	\item physcal simulation hardware (OPAL-RT)
+\end{itemize}
+
+
+
 \section{descussing results of the implemented IDS (compare old graphes with new graphes)}
 
 
-
-
-
 \section{conclusion}
+
