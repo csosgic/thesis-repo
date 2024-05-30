@@ -1,4 +1,4 @@
-\chapter{Contributions} \label{chap:Contributions}
+\chapter{Intrusion Detection Systems} \label{chap:Intrusion Detection Systems}
 
 
 \section*{Introduction}
@@ -24,7 +24,7 @@ An IDS on its own cannot stop intrusions; it can only detect and report them. Ho
 
 
 \section{Intrusion detection systems architecture}
-Intrusion detection systems, like any complex system, are made of multiple interoperating components with a specific task assigned to each component. Although the functioning of an IDS changes vastly between different types of IDSs (diffrent in deployment or detection methods), they all share a common general architecture, which is composed of the following components as shown in Figure \ref{fig:arch_IDS} \cite{arch-IDS}:
+Intrusion detection systems, like any complex system, are made of multiple interoperating components with a specific task assigned to each component. Although the functioning of an IDS changes vastly between different types of IDSs (different in deployment or detection methods), they all share a common general architecture, which is composed of the following components as shown in Figure \ref{fig:arch_IDS} \cite{arch-IDS}:
 
 \begin{figure}[h]
 	\centering
@@ -38,7 +38,7 @@ Intrusion detection systems, like any complex system, are made of multiple inter
 	\item Data gathering components (sensor): tasked with collecting information from the monitored environment.
 	\item Detector (IDS engine): analyzes the data collected by the sensor to determine the presence of suspicious activity.
 	\item Knowledge base(database): the database that stores information collected previously by sensors about known attacks that allows the engine to determine the suspesious activity.
-	\item Configuration component: defines settings and the behavious of the system.
+	\item Configuration component: defines settings and the behaviour of the system.
 	\item Response component: this component is responsible for responding to the detected intrusion and either attempts to prevent the intrusion (IPS) or reports it to a human administrator (IDS).
 \end{itemize}
 
@@ -116,7 +116,7 @@ This type of IDS uses 2 sources of information inside the device's operating sys
 
 
 \subsubsection{Other types of IDS}
-uncommon types with specific functions usally used togther with NIDS or HIDS to augment thier detection capabilities
+uncommon types with specific functions usually used together with NIDS or HIDS to augment their detection capabilities
 
 \firmlist
 \begin{itemize}
@@ -144,7 +144,7 @@ SIDs define patterns in known cyberattacks and store them in a database as signa
 
 
 \subsubsection{Anomaly-based detection}
-AIDs can identifi abnormal behavious in the enviroment it is used in, this type of IDS first observes and models the normal behaviours then compares the trffic to this model to determine the presnece of suspesious activity. the constructed model is created based on the data collected by observing the behaviour of the system over a specific period of time of normal operation. \cite{NIST-IDS}
+AIDs can identify abnormal behaviour in the environment it is used in, this type of IDS first observes and models the normal behaviours then compares the trffic to this model to determine the presnece of suspesious activity. the constructed model is created based on the data collected by observing the behaviour of the system over a specific period of time of normal operation. \cite{NIST-IDS}
 
 AIDs often lead to a lot of false negatives because the normal activity varies alot over time, althout it is better than SIDs in detecting new and unknown attacks. it can also be used to provide new data for the signature-based detection systems. \cite{NIST-IDS}
 
@@ -166,15 +166,15 @@ sigVSano.tex
 \end{table}
 
 
-The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitores the activity of a network or a host scanning for attacks or malicious acitvity, the diffrence beween them is that IDPS can activly block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack.
+The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitors the activity of a network or a host scanning for attacks or malicious acitvity, the difference between them is that IDPS can actively block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack.
 
 \section{Evolutions of IDS: IPS/IDPS}
-The main drawback of an IDS is its inability to perform a response for the attack and actively prevent malicious activity. Because of that, a new system was developed to remove those vulnerabilities, and called IDPS, even though IDPS is similar to IDS when monitoring the network or host for the presence of attacks or malicious activity, it is diffrent from IDS as it can be used to prevent such intrusion automatically, for example it can drop malicious packets from the internet, block or ban the IP address or the suspected traffic to the host, server or application, etc, Additionally, it is also able to recognise reconnaissance, such as port and host scans, which would suggest a future possible attack. \cite{NIST-IDPS}
+The main drawback of an IDS is its inability to perform a response for the attack and actively prevent malicious activity. Because of that, a new system was developed to remove those vulnerabilities, and called IDPS, even though IDPS is similar to IDS when monitoring the network or host for the presence of attacks or malicious activity, it is different from IDS as it can be used to prevent such intrusion automatically, for example it can drop malicious packets from the internet, block or ban the IP address or the suspected traffic to the host, server or application, etc, Additionally, it is also able to recognise reconnaissance, such as port and host scans, which would suggest a future possible attack. \cite{NIST-IDPS}
 
 
 
 \section{IDPS/IDPS classification}
-just like IDS, IDPS is calssified according to two criterias: deployment method and detection method.
+just like IDS, IDPS is classified according to two criteria: deployment method and detection method.
 
 \subsection{Deployment methods}
 \subsubsection{Network-based Prevention System (NIPS)}
@@ -198,8 +198,8 @@ IDPS has 3 primary detection methodes:
 
 
 \begin{itemize}
-	\item Signature-based: Signature based detection is fairly similar to that of IDS with the diffrence beign that IDPS is capable of blocking or countring the detected intrusion
-	\item Anomaly-based: tyhe same thing applies to Anomaly-based detection as the detection phase is the same between IDS and IDPS
+	\item Signature-based: Signature based detection is fairly similar to that of IDS with the difference beign that IDPS is capable of blocking or countring the detected intrusion
+	\item Anomaly-based: the same thing applies to Anomaly-based detection as the detection phase is the same between IDS and IDPS
 	\item Stateful protocol analysis applies the technique of comparing observed user behavior with predefined profiles that define what is regarded as normal activity. What sets it apart from anomaly-based detection is that stateful protocol analysis employs vendor-specific profiles which define normal behavior of a protocol. In this type of IPS, network, transport, and application layer protocol states will be tracked in order for the Intrusion Detection Prevention System (IDPS) to understand the state transitions. Consequently, when a user logs into an FTP session in an unauthenticated state, he can only execute basic commands such as viewing help information or providing login credentials. As a result, this allows the Intrusion Detection and Prevention System to differentiate between suspicious and benign actions by checking whether they conform to what is expected at that particular point or not after pair requests with responses and successfully authenticating. \cite{NIST-IDPS19-20}
 	
 
@@ -213,8 +213,8 @@ IDPS has 3 primary detection methodes:
 
 
 
-\section{cyberattacks on smart grid and thier classification}
-the Smart grid is suseptibale to a wide variaty of cyberattacks like malicious code, jamming, spoofing, injections, traffic evesdropping, and social engineering jsut to name a few
+\section{cyberattacks on smart grid and their classification}
+the Smart grid is suseptibale to a wide variety of cyberattacks like malicious code, jamming, spoofing, injections, traffic eavesdropping, and social engineering just to name a few
 
 on this project we will be looking at some of the most commonly used attacks
 
@@ -232,17 +232,16 @@ A denial-of-service attack is an attack in which the perpetrator sends a large a
 Another version of DoS attacks is the distributed denial-of-service attack (DDoS), and what sets it apart from a normal DoS attack is the number of devices used in attack. DDoS usually leverages the use of botnets, which are infected machines controlled by the attacker. Having more devices means the ability to send an even larger amount of traffic to the target and also makes it harder to identify the attacker. \cite{dos}
 	
 
-\subsubsection{Malicious code}
-\begin{itemize}
-	\item Malware: Malware, which stands for malicious software, is a computer- and user-harming program that steals information, corrupts files, or disrupts computers. Its wide presence greatly threatens the security of computers, thus hindering network growth and targeting network-based applications. Malware makers keep upgrading their tactics to avoid being detected by using encryption and morphing techniques such as polymorphism and metamorphism. Signature-based detection methods work well with known malware but struggle with new ones, especially those that are polymorphic. On the other hand, heuristic-based detection usually gives false negatives and positives despite its ability to identify both new and existing malicious programs. Therefore, machine-learning algorithms combined with data-mining techniques are incorporated into existing approaches for fighting against ever-changing malware threats in order to enhance the accuracy of detection. \cite{malware} Malware has multiple types. some of which are:
+\subsubsection{Malicious software}
+Malware, which stands for malicious software, is a computer- and user-harming program that steals information, corrupts files, or disrupts computers. Its wide presence greatly threatens the security of computers, thus hindering network growth and targeting network-based applications. Malware makers keep upgrading their tactics to avoid being detected by using encryption and morphing techniques such as polymorphism and metamorphism. Signature-based detection methods work well with known malware but struggle with new ones, especially those that are polymorphic. On the other hand, heuristic-based detection usually gives false negatives and positives despite its ability to identify both new and existing malicious programs. Therefore, machine-learning algorithms combined with data-mining techniques are incorporated into existing approaches for fighting against ever-changing malware threats in order to enhance the accuracy of detection. \cite{malware} Malware has multiple types. some of which are:
 
 	\begin{itemize}
 	\item Viruses: Viruses need a host program or file to infect and propagate in a system. They remain dormant until the host is executed; then, they insert their code into other programs, copy themselves, damage files and spread to more devices. Viruses depend on human interaction for their activation and spreading from one computer to another. some of the consequences of this type of malware are performance issues, data or money loss, privacy invasion, and large-scale and nation-state attacks. \cite{virusVSworm}
 	\item Worms: Worms are independent programs which do not require any hosts. They can reproduce themselves and propagate automatically in a system without being activated by humans leading them to spread very fast often throughout a local network, sometimes at exponential rates. Security vulnerabilities may allow worms into a system without user's consent. Worms are generally considered more dangerous than viruses due to their ability to spread more quickly and without human interaction.\cite{virusVSworm}
-	\item Trojans: A trojan horse usually apears as a harmless piece of software, once it is installed on a system it is a  dangerous malware. This malicious application often disguises as a legitimate file in email attachments or free software, waiting for the user to download them or click on them. Once infiltrated, the Trojan can carry out multiple functions as coded by it's author. The infection occurs after a user downloads a file containing the server side of the malicious software, which is then set up once it has been downloaded, the attacker spams emails to a lot of users with a torjan horse attached for download hoping those users will download it. Infected systems can infect other devices, forming a botnet.\cite{torjanhorse}
+	\item Trojans: A trojan horse usually appears as a harmless piece of software, once it is installed on a system it is a  dangerous malware. This malicious application often disguises as a legitimate file in email attachments or free software, waiting for the user to download them or click on them. Once infiltrated, the Trojan can carry out multiple functions as coded by it's author. The infection occurs after a user downloads a file containing the server side of the malicious software, which is then set up once it has been downloaded, the attacker spams emails to a lot of users with a torjan horse attached for download hoping those users will download it. Infected systems can infect other devices, forming a botnet.\cite{torjanhorse}
 	\end{itemize}
-	\item Exploit kits: an exploit kit is used by cyber criminals to identify vulnerabilities in software or an operating system, then upload malicious code and execute it on their device. Those kits automatically exploit software vulnerabilities, often because the software is outdated. They work by redirecting the victim to compromised websites to identify vulnerabilities in their system and decides which exploits to use and uploading it to the user. If it succeeds, it downloads and executes a malicious piece of code that gives the attacker access to the victim's machine. \cite{exploit-kit}
-\end{itemize}
+
+Another type of Malware is Exploit kits which is used by cyber criminals to identify vulnerabilities in software or an operating system, then upload malicious code and execute it on their device. Those kits automatically exploit software vulnerabilities, often because the software is outdated. They work by redirecting the victim to compromised websites to identify vulnerabilities in their system and decides which exploits to use and uploading it to the user. If it succeeds, it downloads and executes a malicious piece of code that gives the attacker access to the victim's machine. \cite{exploit-kit}
 
 \subsubsection{injection attacks}
 \begin{itemize}
@@ -253,11 +252,10 @@ Another version of DoS attacks is the distributed denial-of-service attack (DDoS
 \subsubsection{replay of messages}
 
 
-categories
-	variants
-	assets effected
-
-attacks - thier target - thier consequences - some solutions maybe
+%categories
+%	variants
+%	assets effected
+%attacks - their target - their consequences - some solutions maybe
 
 
 
@@ -267,12 +265,12 @@ required to be able to do :
 
 \firmlist
 \begin{itemize}
-	\item detecting wide range of intrusions
-	\item fast detection
-	\item accuracy (FP/FN/TP/TN)
-	\item resource effecient
-	\item scalable
-	\item easy to operate (user friendly)
+	\item detecting wide range of intrusions: 
+	\item fast detection: 
+	\item accuracy (FP/FN/TP/TN): 
+	\item resource effecient: 
+	\item scalable: 
+	\item easy to operate (user friendly): 
 \end{itemize}
 
 
@@ -294,6 +292,21 @@ required to be able to do :
 
 \chapter{Implementation} \label{chap:Implementation}
 \section{Introdution}
+% needs to be changed and corrected
+Machine learning (ML)-based intrusion detection systems (IDS) have become increasingly important in securing smart grid computing environments. Smart grids face significant security threats due to their reliance on shared communication networks and unique vulnerabilities.
+
+Conventional IDSs have limitations in addressing the dynamic nature of smart grid communication networks in terms of scalability and adaptiveness to real-time traffic patterns. ML-based IDS approaches have shown promise in advancing state-of-the-art system security and defense mechanisms for smart grids.
+
+Compared to other network environments, ML-based IDS research in smart grids is relatively unexplored, despite the serious security threats the smart grid environment faces.
+This survey examines how ML-based IDS research has been applied to detect cyberattacks in smart grid environments, providing insights into the limitations of the current state-of-the-art and identifying areas for future research.
+
+The survey covers key aspects, including:
+%(1) applications of ML-based IDS in transmission and distribution power components of smart grids.
+%(2) dataset generation and usage for ML-based IDS.
+%(3) a range of ML-based IDS techniques used in smart grid environments.
+%(4) performance metrics complexity analysis, and evaluation testbeds.
+%(5) lessons learned and future research directions.
+
 
 
 
@@ -302,42 +315,102 @@ attacks and thier targets and consequences in the simulation
 
 
 
-\section{tools used}
-\subsection{programming langues used}
+\section{development tools used}
+\subsection{Work environment}
+
+
+\subsubsection{jupyter notebook}
+is an open source web application or a vscode extension that facilitates the creation and sharing of segmented documents that contains blocks of interactive code, text and data visualations , it is mostly used for data science, machine learning and scientific computing, it supports a wide range of programming languages like python, R, scala and julia, it can also display some text formats like 
+
+
+\subsubsection{VScode}
+
+
+
+\subsection{programming langues}
 \subsubsection{python3}
 version 3.12.3 
 
+
+
+
+- Python is an interpreted, interactive and object-oriented
+- dynamically typed
+- It supports multiple programming paradigms beyond object-oriented programming, such as procedural, functional programming.
+- simple and easy to read syntax
+- strong community and a lot of 3rd party packages that can by installed via pip, the python package manager
+- was created by Guido van Rossum in x*x*x the python3 version was released in x*x*x
+
+
+%cite{https://docs.python.org/3/faq/general.html#what-is-python}
+
+
 packages
 \begin{itemize}
-	\item ipynb
 	\item numpy
+
+	%https://www.nature.com/articles/s41586-020-2649-2.pdf
+
 	\item pandas
+
+	%https://pandas.pydata.org/about/
+
+
 	\item seaborn
-	\item sklearn
-\end{itemize}
+	
 
+	\item matplotlib
+	
 
-\subsubsection{various config files for ns3, gridlab and FNCS}
-\begin{itemize}
-	\item .glm files for gridlab (also .player files)
-	\item .dot files for gridlab
-	\item .txt files (for FNCS) 
-	\item .zpl files (for FNCS) 
-\end{itemize}
+	\item scikit-learn
+	
 
-
-
-\section{testing IDS in a smart grid}
-
-\begin{itemize}
-	\item some people use thier systems simulated testbed
-	\item physcal simulation hardware (OPAL-RT)
+	\item optuna
+	
+	
 \end{itemize}
 
 
 
-\section{descussing results of the implemented IDS (compare old graphes with new graphes)}
 
+\subsection{how to use it (software environment)}
+in real life would be installed on a specialized software and placed near the firewall
+
+PYthon3
+uses pyQT+PYSIDE
+XML to specify ui file
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Data generation}
+got it from kaggle
+
+\section{Implementation}
+
+
+
+
+
+
+\subsection{Implementation}
+AI training steps
+
+- dataset reading
+- cleaning and preprocessing the data
+- maybe resampling (SMOTE oversampling)
+- splitting data to training, and testing
+
+- 
 
 \section{conclusion}
 

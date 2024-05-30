@@ -1,1 +1,8 @@
-NF-UQ-NIDS-v2.csv
+*
+
+!Train_data.csv
+!Ttest_data.csv
+
+
+!*.py
+!data.ipynb
