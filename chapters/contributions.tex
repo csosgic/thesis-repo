@@ -45,15 +45,15 @@ Intrusion detection systems, like any complex system, are made of multiple inter
 
 
 \section{Intrusion detection systems classification}
-Intrusion detection systems are classified according to two criteria of classification, which are as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
+Intrusion detection systems are classified according to two criteria of classification, which as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
 
 \firmlist
 \begin{itemize}
-	\item deployment method
-	\item detection method
+	\item deployment method \cite{ids-classification}
+	\item detection method \cite{ids-classification}
 \end{itemize}
 
-\cite{ids-classification}
+
 
 
 \begin{figure}[h]
@@ -65,14 +65,8 @@ Intrusion detection systems are classified according to two criteria of classifi
 
 
 
-
 \subsection{Deployment methods}
-
-2 primary are HIDS and NDIS 
-
-some more specialized methods PIDS APIDS and hybrid
-https://www.ibm.com/topics/intrusion-detection-system
-
+The deployment of IDS involves several methods that ensure effective monitoring and detection of potential threats. Here are some common deployment methods for IDS.
 
 \subsubsection{NIDS}
 Network intrusion detection systems are the most commonly used commercial IDS. They are usually placed at the start edge of the sub-network, right after the firewall (if one exists), so they can have access to all inbound traffic to all devices on the network \cite{NIST-IDS}. NIDS protects the networks from cyber attacks and threats by scanning and monitoring TCP/IP packets for known attack signatures and reporting them to the administrator \cite{NIDS-ip-tcp}
@@ -116,7 +110,7 @@ This type of IDS uses 2 sources of information inside the device's operating sys
 
 
 \subsubsection{Other types of IDS}
-uncommon types with specific functions usually used together with NIDS or HIDS to augment their detection capabilities
+uncommon types with specific functions usually, used together with NIDS or HIDS to augment their detection capabilities.
 
 \firmlist
 \begin{itemize}
@@ -134,7 +128,7 @@ uncommon types with specific functions usually used together with NIDS or HIDS t
 
 
 \subsection{Detection methods}
-there are 2 primary methodes of detection for IDS which are anomaly-based and signature-based (which is also known as misuse intrusion detection or knowledge-based intrusion detection). \cite{ids-classification}
+There are two primary methodes of detection for IDS which are anomaly-based and signature-based (which is also known as misuse intrusion detection or knowledge-based intrusion detection). \cite{ids-classification}
 
 
 
@@ -152,7 +146,7 @@ AIDs often lead to a lot of false negatives because the normal activity varies a
 
 
 \subsubsection{Hybrid detection}
-Hybrid IDS uses both Signature based and anomaly based detection althout it's not widely used because it is still in development
+Hybrid IDS uses both Signature based and anomaly based detection althout it's not widely used because it is still in development. \cite{NIDS-ip-tcp}
 \clearpage
 
 \subsubsection{Signature-based VS Anomaly-based detection}
@@ -173,8 +167,18 @@ The main drawback of an IDS is its inability to perform a response for the attac
 
 
 
-\section{IDPS/IDPS classification}
-just like IDS, IDPS is classified according to two criteria: deployment method and detection method.
+\section{IPS/IDPS classification}
+Just like IDS, IDPS is classified based on two criteria, including their deployment and detection methods as shown in Figure \ref{fig:IDPS-classification-taxonomy} are:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/IDPS_classification.pdf}
+	\caption{IDPS classification taxonomy}
+	\label{fig:IDPS-classification-taxonomy}
+\end{figure}
+
+
+
 
 \subsection{Deployment methods}
 \subsubsection{Network-based Prevention System (NIPS)}
@@ -213,17 +217,16 @@ IDPS has 3 primary detection methodes:
 
 
 
-\section{cyberattacks on smart grid and their classification}
+\section{Cyberattacks on smart grid and their classification}
 the Smart grid is suseptibale to a wide variety of cyberattacks like malicious code, jamming, spoofing, injections, traffic eavesdropping, and social engineering just to name a few
 
 on this project we will be looking at some of the most commonly used attacks
 
-https://arxiv.org/pdf/2207.07738 page 13
+%add more
+
 \subsection{cyberattack types}
 \subsubsection{Denial-of-service attack}
 A denial-of-service attack is an attack in which the perpetrator sends a large amount of traffic to the target to overload it and render a service or a server incapable of processing legitimate user requests. \cite{dos}, some types of denial of service attacks are:
-
-	
 \begin{itemize}
 	\item SYN flood: This happens when the attacker sends a 3-way handshake request without completing it, leaving the server waiting for a response and wasting time and resources that could be used by a legitimate user. \cite{dos}
 	\item smurf attack: the attacker sends ICMP (Internet Control Message Protocol) broadcast packets to some hosts in the network with a spoofed source IP address that is the IP of the target, those hosts would then respond to the spoofed IP address, flooding the target with those responses. This usually happens because of a misconfiguration of the devices on the network. \cite{dos}
@@ -244,33 +247,27 @@ Malware, which stands for malicious software, is a computer- and user-harming pr
 Another type of Malware is Exploit kits which is used by cyber criminals to identify vulnerabilities in software or an operating system, then upload malicious code and execute it on their device. Those kits automatically exploit software vulnerabilities, often because the software is outdated. They work by redirecting the victim to compromised websites to identify vulnerabilities in their system and decides which exploits to use and uploading it to the user. If it succeeds, it downloads and executes a malicious piece of code that gives the attacker access to the victim's machine. \cite{exploit-kit}
 
 \subsubsection{injection attacks}
-\begin{itemize}
-	\item Malicious code injection:
-	\item Malicious data injection:
-\end{itemize}
+code injection attacks is when a cyber criminal is capable of editing
+%need to complete
 
 \subsubsection{replay of messages}
-
-
-%categories
-%	variants
-%	assets effected
-%attacks - their target - their consequences - some solutions maybe
+The replay attack takes place when a cyber criminal intercepts and forwards a secure network communication messages to deceive the recipient into doing something he is not allowed to do. reply of messages is very dangerous because no advanced decryption techniques are needed, only resending of the intercepted message, a captured message that is resent can be successful in this attack since it appears genuine due to its original encryption. One instance in real life involves a staff member who sends an encrypted message to the financial administrator requesting for a transfer of money. This message is intercepted, copied and then sent again by an attacker.The financial administrator sees that the request is properly encrypted hence would respond appropriately unless suspiciousness occurs. Consequently, this could lead to remitting of huge amount of money into the account of the hacker. \cite{replay}
 
 
 
 
-\section{maybe IDS usage in smart grid}
+
+\section{IDPS usage in smart grid}
 required to be able to do :
 
 \firmlist
 \begin{itemize}
-	\item detecting wide range of intrusions: 
-	\item fast detection: 
-	\item accuracy (FP/FN/TP/TN): 
-	\item resource effecient: 
-	\item scalable: 
-	\item easy to operate (user friendly): 
+	\item detecting wide range of intrusions
+	\item fast detection
+	\item accuracy (FP/FN/TP/TN)
+	\item resource efficient
+	\item scalable
+	\item easy to operate (user friendly)
 \end{itemize}
 
 
@@ -292,26 +289,20 @@ required to be able to do :
 
 \chapter{Implementation} \label{chap:Implementation}
 \section{Introdution}
-% needs to be changed and corrected
-Machine learning (ML)-based intrusion detection systems (IDS) have become increasingly important in securing smart grid computing environments. Smart grids face significant security threats due to their reliance on shared communication networks and unique vulnerabilities.
+%% incomplete
+In this chapter, we will put into practice our proposed approach which is a deep learning model of an IDS that utilises the XXX algorithm of learning
 
-Conventional IDSs have limitations in addressing the dynamic nature of smart grid communication networks in terms of scalability and adaptiveness to real-time traffic patterns. ML-based IDS approaches have shown promise in advancing state-of-the-art system security and defense mechanisms for smart grids.
+in the previous chapter in order to test its feasibility and evaluate the results in a study of cases. The objective is to measure the degree of success of our approach. To do this, We will start by proposing a specific 
+XXXXXXX (our specifics)
+which will improve the detection accuracy in smart grid networks
 
-Compared to other network environments, ML-based IDS research in smart grids is relatively unexplored, despite the serious security threats the smart grid environment faces.
-This survey examines how ML-based IDS research has been applied to detect cyberattacks in smart grid environments, providing insights into the limitations of the current state-of-the-art and identifying areas for future research.
 
-The survey covers key aspects, including:
-%(1) applications of ML-based IDS in transmission and distribution power components of smart grids.
-%(2) dataset generation and usage for ML-based IDS.
-%(3) a range of ML-based IDS techniques used in smart grid environments.
-%(4) performance metrics complexity analysis, and evaluation testbeds.
-%(5) lessons learned and future research directions.
 
 
 
 
 \section{Case study description}
-attacks and thier targets and consequences in the simulation
+attacks and their targets and consequences in the simulation
 
 
 
@@ -329,45 +320,37 @@ is an open source web application or a vscode extension that facilitates the cre
 
 \subsection{programming langues}
 \subsubsection{python3}
-version 3.12.3 
+An important aspect of Python lies in its being more than just an object-oriented programming language because it supports other programming paradigms, which are procedural and functional programming making it flexible when choosing the desired approach. It has user-friendly syntax making it easy to digest even for beginner, This has led to the rise of Python's ecosystem fostered by active community coupled with simplicity behind coding style making it easily accessible by almost everyone. To further improve its capability and functionality, python boast a wide range of third party packages that can easily be installed through Python package manager called pip. Python was created in 1991 by Guido van Rossum. A major landmark came in 2008 with the development of python3 which introduced several improvements and enhancements to the language thereby cementing its place as a valuable flexible programming tool on earth today. \cite{python}
 
 
 
 
-- Python is an interpreted, interactive and object-oriented
-- dynamically typed
-- It supports multiple programming paradigms beyond object-oriented programming, such as procedural, functional programming.
-- simple and easy to read syntax
-- strong community and a lot of 3rd party packages that can by installed via pip, the python package manager
-- was created by Guido van Rossum in x*x*x the python3 version was released in x*x*x
 
 
-%cite{https://docs.python.org/3/faq/general.html#what-is-python}
+libraries that are useful for the development:
 
-
-packages
 \begin{itemize}
-	\item numpy
-
-	%https://www.nature.com/articles/s41586-020-2649-2.pdf
-
-	\item pandas
-
-	%https://pandas.pydata.org/about/
+	\item NumPy: NumPy is the primary array programming library for the Python language, with an essential role in research analysis pipelines across diverse fields such as physics, chemistry, astronomy, geoscience, biology, psychology, and more. The NumPy array is an efficient data structure that stores and accesses multidimensional arrays (tensors), enabling a wide variety of scientific computation. NumPy was initially developed by students, faculty and researchers to provide an advanced, open-source array programming library for Python, with a sense of building something consequential together for the benefit of many others. \cite{python}
 
 
-	\item seaborn
+
+	\item Pandas: Pandas is a Python open source program meant for data management and analysis, it was started in 2008 by AQR Capital Management. It went public in late 2009 and has an active community of contributors. Some of the most important features associated with pandas are fast and efficient DataFrame object for data manipulation with integrated indexing, tools for reading and writing data between in-memory data structures and different formats, time series functionality like date range generation, frequency conversion, moving window statistics, and date shifting and highly optimized performance with critical code paths written in Cython or C. \cite{pandas}
 	
 
-	\item matplotlib
+	Matplotlib: Matplotlib is a 2D graphics package used for Python in application development, interactive scripting, and publication-quality image generation across user interfaces and operating systems. The author, John D. Hunter started using Python in 2001 and was initially frustrated by the lack of a graphics environment as powerful as MATLAB. 
+	
+	\item Matplotlib: Matplotlib is a 2D plotting library for Python which can produce publication quality plots, used in application development, interactive scripting and image creation on all operating system and user interface platforms. The author of Matplotlib John D. Hunter began using Python in 2001 and was initially frustrated at the lack of a powerful graphics environment like MATLAB's. He then developed Matplotlib to satisfy his needs, focusing initially on embedding it in a GUI for his ECoG application and then gradually adding support for other features like high-quality raster and vector output, support for mathematical expressions, and interactive use from the shell. %need to cite
+
+
+	\item Seaborn: Seaborn is a python library for making statistical graphics, Seaborn is a high-level interface to Matplotlib and compatible with Pandas's data structures. Seaborn can provide the data with a dataset alongside plot specifications and automatically maps the values onto visual attributes such as color, size or style; internally seaborn performs the relevant statistical transformations and finally adds axis labels as well as legends for the plots. Many Seaborn functions can generate multi-panel figures for comparing different subsets of data or variable pairings within a dataset. By allowing quick prototyping and exploratory analysis of data in single-function calls with just a few arguments, Seaborn can be used throughout the scientific project cycle.  \cite{seaborn}
 	
 
-	\item scikit-learn
 	
 
-	\item optuna
-	
-	
+	\item scikit-learn:
+
+	\item optuna:
+
 \end{itemize}
 
 
@@ -395,7 +378,6 @@ XML to specify ui file
 \section{Data generation}
 got it from kaggle
 
-\section{Implementation}
 
 
 
@@ -405,12 +387,70 @@ got it from kaggle
 \subsection{Implementation}
 AI training steps
 
-- dataset reading
-- cleaning and preprocessing the data
-- maybe resampling (SMOTE oversampling)
-- splitting data to training, and testing
 
-- 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=300px]{figures/ml_staps.jpg}
+	\caption{HIDS \cite{geeksforgeeks}}
+	\label{fig:HIDS}
+\end{figure}
+cite https://onlinelibrary.wiley.com/cms/asset/4959b86a-b838-450c-ba2a-ae590e0b6d98/ett4150-fig-0005-m.jpg
+
+
+
+
+\subsubsection{Data preprocessing}
+\begin{itemize}
+	\item importing data
+	\item SMOTE oversampling(optional)
+	\item cleaning data
+		\begin{itemize}
+			\item removing null values
+			\item removing infinity or invalid values
+			\item removing duplicates
+		\end{itemize}
+	\item Encoding the categorical variables
+	\item Recursive Feature Elimination (selecting features to use)
+	\item feature importance classification
+\end{itemize}
+
+
+
+\subsubsection{Internet activity classification (benigne/ddos/.....)}
+\subsubsection{Internet activity classification (benigne/ddos/.....)}
+
+
+\subsubsection{result discussion}
+
+training time
+training time
+
+(FP/TP/FN/TN)
+accuracy
+recall
+F1-score
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{conclusion}
 
