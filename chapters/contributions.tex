@@ -540,9 +540,9 @@ After the training process is finished, we can use the Keras save() function to 
 The LSTM model implementation is very similar to the CNN implementation, with only a few challenges. Those changes being that CNN uses the Conv1D() function to create its one-dimensional convolutional layer, while LSTM uses the LSTM() function to add its layers.
 
 \lstinputlisting[language=Python]{listings/LSTM_model.py}
-
-
-
+And after the model training is finished, we save the model for later loading and usage.
+\lstinputlisting[language=Python]{listings/LSTM_save_load_model.py}
+\newpage
 
 We get a model summary for the LSTM model as well.
 
