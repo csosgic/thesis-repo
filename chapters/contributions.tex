@@ -322,7 +322,7 @@ As we can see in Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=400px]{figures/unbalanced_data.png}
-	\caption{data sample}
+	\caption{Bar graph pf the unbalanced dataset}
 	\label{fig:unbalanced_data}
 \end{figure}
 
@@ -337,14 +337,15 @@ As we can see in Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_
 \newpage
 
 \subsubsection{Cleaning data}
-To clean our data we must first find and remove unwanted data like missing values, null values, duplicate rows and unneeded columns or features.
+This is an important step, and executing it efficiently is necessary for accurate predictions in our deep learning model. To clean our data, we must first find and remove unwanted data like missing values, null values, duplicate rows, and unneeded columns or features.
+
 
 
 \firmlist
 \begin{itemize}
 	\item Finding and cleaning missing values: First, we identify the columns that contain null values in our dataset by identifying columns with missing values, after which we decide to eliminate the rows containing null values from the dataset. The objective of this step is to eliminate missing data to ensure quality and consistency in the model training.
 	\lstinputlisting[language=Python]{listings/cleaning_nulls.py}
-	\item removing duplicate rows: we also remove duplicate rows for a better-quality dataset and to avoid bias in our model.
+	\item Removing duplicate rows: We also remove duplicate rows for a better-quality dataset and to avoid bias in our model.
 	\lstinputlisting[language=Python]{listings/cleaning_dups.py}
 \end{itemize}
 
@@ -354,7 +355,8 @@ To clean our data we must first find and remove unwanted data like missing value
 
 
 \subsubsection{Encoding the categorical variables}
-The LabelEncoder assigns a unique integer to each categorical value which is the label in our case which is the traffic type(benign or attack), which which allows them to be represented in a numerical form. This makes it easier to use of these variables in machine learning algorithms, as they can handle numerical values better.
+The LabelEncoder assigns a unique integer to each categorical value, which is the label in our case, which is the traffic type (benign or attack type), which allows them to be represented in a numerical form. This makes it easier to use these variables in machine learning algorithms, as they can handle numerical values better.
+
 
 \lstinputlisting[language=Python]{listings/encoding_cat_var.py}
 
@@ -364,25 +366,20 @@ The LabelEncoder assigns a unique integer to each categorical value which is the
 
 
 \subsubsection{Augmenting the data}
-As we have stated before in section \ref{Dataset} that our dataset is unbalanced in the distribution between benign and malicious activity which is a bad thing because it will introduce bias, overfitting and poor prediction performance to our model.
+As we have stated before in Section \ref{Dataset}, our dataset is unbalanced in the distribution between benign and malicious activity, which is a bad thing because it will introduce bias, overfitting, and poor prediction performance to our model. Therefore, In this step, we will resample our dataset to get a better 1:1 ratio between our different categorical variables (benign and other attack types). The following Python code snippet uses the resample function from scikit-learn; it does the resampling we need to make our dataset balanced.
 
 
 
-
-
-
-
-In this step we will resample our dataset to get a better 1:1 ration between our different categorical variables (benign and other attack types).
 
 \lstinputlisting[language=Python]{listings/resample.py}
 
-the python code snippet uses the resample function from scikit-learn, it does the resampling we need to make our dataset balanced 
+
 
 \begin{itemize}
-	\item \texttt{data\_X}: all of those variables are our data which has been cleaned and separated according to the previously encoded categorical variables.
-	\item \texttt{n\_samples}: is the number of rows for each attack types, in this case we used 20000 rows.
-	\item \texttt{random\_state} : this is the resampling seed, by using the same seed number we can ensure that we always get the same results.
-	\item replace: replace decides whether or not the samples can be selected multiple times.
+	\item \texttt{data\_X}:  All of those variables are our data, which has been cleaned and separated according to the categorical variables that we previously encoded.
+	\item \texttt{n\_samples}: Is the number of rows for each attack type; in this case, we used 20000 rows.
+	\item \texttt{random\_state}: This is the resampling seed; by using the same seed number, we can ensure that we always get the same results.
+	\item replace: This variable decides whether or not a sample can be selected multiple times.
 \end{itemize}
 
 
@@ -401,7 +398,8 @@ the python code snippet uses the resample function from scikit-learn, it does th
 	\label{fig:datasample}
 \end{figure}
 
-those resampled variables are then merged and are fed to the deep learning model for training.
+Those resampled variables are then merged and fed to the deep learning model for training.
+
 % this part's format is broken the pdf file
 
 
@@ -409,8 +407,8 @@ those resampled variables are then merged and are fed to the deep learning model
 
 
 \subsubsection{splitting the data for the deep learning model}
-%maybe add smething here idk
-In this step we split our data into 2 sets:
+% this part needs to be extended
+In this step we split our data into 2 sets, training and testing sets:
 \begin{itemize}
 	\item training data: 90\% of the total dataset
 	\item testing data 10\% of the total dataset
@@ -458,32 +456,32 @@ In this step we split our data into 2 sets:
 
 \subsubsection{CNN model}
 % something here
-We built a deep learning model that uses CNN as a learning algorithm with 64 filters, ReLU as the activation function in Python
+In this step we implement a Network Intrusion Detection System (NIDS) using a Convolutional Neural Network (CNN) deep learning model. The model, defined with the Keras Sequential API, is made up of several convolution and pooling layers followed by fully connected layers. The CNN has been structured such a way that it is able to recognize network traffic data patterns meaning it can detect and classify potential denial-of-service (DoS) and distributed denial-of-service (DDoS) attacks.
 
 
-CNN model summary
-\lstinputlisting[language=Python]{listings/CNN_model.py}
+CNN deep learning model creation using the Kera API functions:
+\lstinputlisting[language=Python, caption={CNN Model Code}]{listings/CNN_model.py}
 
-% say something here
-deep learning model creation:
 \firmlist
 \begin{itemize}
-	\item Sequential(): Creates a Sequential model which is a linear stack of layers.
-	\item Conv1D(): adds one dimensional convolutional layer to the model, sets the feature filter and the activation function
-	\item MaxPooling1D(): adds one dimensional pooling layer to the model, which is used to reduce the spatial dimensions of the data 
-	\item Flatten(): used to convert the multidimensional output of the previous layers into a 1D vector
-	\item Dense(): a fully connected layer used to do the classification tasks
-	\item BatchNormalization(): used to normalize the data between different layers, it helps improve the model's performance
-	\item compile(): used to configure the model, it can set the following parameters:
+	\item Sequential(): Creates a model with a stack of layers, where each layer has one input and one output.
+	\item Conv1D(): Adds one dimensional convolutional layer to the model, results in an output tensor.
+	\item MaxPooling1D(): It adds a pooling operation to one-dimensional temporal data.
+	\item Flatten(): This function is used to flatten a matrix into a one-dimensional array.
+	\item Dense(): Previous layer outputs given as inputs to it's neurons, with each nruron producing only one output for the next layer.
+	\item BatchNormalization(): It is employed to normalise the input data such that the mean output is close to zero and the output standard deviation is close to one.
+	\item compile(): Is used for configuring the model before training; this includes but is not limited to:
 		\firmlist
 		\begin{itemize}
-			\item loss function: categorical crossentropy is used to compute the cross-entropy loss between the true class distribution and the predicted class distribution
-			\item optimizer: adam adapts the learning rate for each parameter individually making it effective for fast convergence and robustness.
-			\item metrics: accuracy is the precision of the predicion as a ratio of correct prediction to the total number of predictions which is a measure of the overall performance of the model. 
+			\item loss function: categorical crossentropy, which calculates cross-entropy loss between labels and predictions.
+			\item optimizer: Adam optimization. Stochastic gradient descent method based on adaptive estimation of first-order and second-order moments.
+			\item metrics: accuracy is the ratio of correct predictions to the total number of predictions.
 		\end{itemize}
 \end{itemize}
 
-we also get a summary of the created model, this summary describes the arrangement of the model layers, the number of parameters of each layer, the output shape of each layer and the number of trainable and non-trainable parameters
+
+We also get a summary of the created model. This summary describes the arrangement of the model layers, the number of parameters in each layer, the output shape of each layer, and the number of trainable and non-trainable parameters.
+
 
 
 \newpage
@@ -498,11 +496,19 @@ we also get a summary of the created model, this summary describes the arrangeme
 % add graph
 % reùove this title and continue
 
-Next step is starting the model training with 30 epochs, 32 batch sier and the validation data which is the test data we split from the original dataset earlier
+The next step is starting the model training with 30 epochs, 32 batch sizes, and the validation data, which is the test data we split from the original dataset earlier.
+
 
 \lstinputlisting[language=Python]{listings/CNN_training.py}
 
 
+After the training process is finished, we can use the Keras save() function to save our train model into a .keras file for later use, so we can reuse our model without having to train it each time.
+
+
+\lstinputlisting[language=Python]{listings/CNN_save_load_model.py}
+
+
+%here we add the saving the model
 
 
 
@@ -531,15 +537,14 @@ Next step is starting the model training with 30 epochs, 32 batch sier and the v
 
 \subsubsection{LSTM model}
 % say something
-The LSTM mode implementations is very similar to the CNN implementation with only a few challenges, with those changes being that CNN uses Conv1D() to create it's one dimensional convolutional layer, while LSTM uses LSTM() function to add it's layers 
+The LSTM model implementation is very similar to the CNN implementation, with only a few challenges. Those changes being that CNN uses the Conv1D() function to create its one-dimensional convolutional layer, while LSTM uses the LSTM() function to add its layers.
 
 \lstinputlisting[language=Python]{listings/LSTM_model.py}
 
 
 
 
-we get a model summary for the LSTM model as well
-
+We get a model summary for the LSTM model as well.
 
 \begin{figure}[h]
 	\centering
@@ -549,6 +554,7 @@ we get a model summary for the LSTM model as well
 \end{figure}
 
 
+%here we add the saving the model
 
 
 
@@ -561,24 +567,35 @@ we get a model summary for the LSTM model as well
 
 
 \subsection{Results}
-In this we will compile the data from our models evaluation on the test data with both the CNN and the LSTM models, the metrics that we use for evaluation are mainly the detection accuracy and loss rate, we will also be looking at other mertics like
-some criteria of evaluation are:
+In this step, we will compile the data from our model evaluation on the test data with both the CNN and the LSTM models. The metrics that we use for evaluation are mainly the detection accuracy and loss rate. We will also be looking at other metrics like
 
+The metrics used for the evaluation are primarily accuracy, but there are also some other metrics, including:
 \begin{itemize}
-	\item Accuracy: Accuracy measures the overall correctness of a model's predictions. It is calculated as (TP + TN) / (TP + TN + FP + FN). Accuracy can be misleading, especially with imbalanced datasets.
-	\item precision: Precision measures the proportion of true positives among the positive predictions made by the model. It is calculated as TP / (TP + FP). Precision is useful when the cost of false positives is high, such as in spam detection.
-	\item F1-score: The F1 score is the harmonic mean of precision and recall. It ranges from 0 to 1, with 1 being best. The F1 score provides a balance between precision and recall. It is calculated as 2 * (Precision * Recall) / (Precision + Recall).
-	%\item confucsion matrix: A confusion matrix is a table that summarizes the performance of a classification model. It has actual values on one axis and predicted values on the other. The cells contain true positives (TP), true negatives (TN), false positives (FP), and false negatives (FN).
+	\item Accuracy: Accuracy is a measure of the overall correctitude of predictions made by models. It can be calculated as (TP+TN)/(TP+TN+FP+FN). The accuracy metric is deceptive especially in cases where datasets are not balanced.
+	\item precision: Precision on the other hand measures the rate of true positives among all positive predictions that the model makes. Precision can be expressed as TP/(TP+FP). Precision comes in handy when wrong positive consequences could have serious implications, for example spam detection effort.
+	\item F1-score: F1 score is harmonic mean of precision and recall and ranges between 0 to 1 whereby 1 means best. F1 Score provides balance between recall and precision. This may be given as 2*(Precision*Recall)/(Precision + Recall).
+	\item confucsion matrix: A confusion matrix is a table that summarizes how well a classifier performed in classification tasks. In one axis there are actual values while on another predicted values are found. These cells consists of True Positives(TP), True Negatives(TN), False Positives(FP) and False negatives (FN).
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
 
 \subsubsection{CNN model}
 evaluating the CNN model with the test data:
 \firmlist
 		\begin{itemize}
-			\item accuracy: 99.66\%
-			\item loss: 1.44\%
+			\item accuracy: 99.64\%
+			\item loss: 1.56\%
 		\end{itemize}
-
+		\newpage
 		% add recall precsition and f1-score
 		% add confucsion matrix
 		% images
@@ -589,13 +606,13 @@ evaluating the CNN model with the test data:
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=400px]{figures/CNN_training_validation.png}
-			\caption{Accuracy curve}
+			\caption{Accuracy graph}
 			\label{fig:aa}
 		\end{figure}
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=400px]{figures/CNN_training_validation_loss.png}
-			\caption{ Loss curve}
+			\caption{Loss graph}
 			\label{fig:ff}
 		\end{figure}
 		
@@ -607,8 +624,8 @@ evaluating the CNN model with the test data:
 evaluating the LSTM model with the test data:
 \firmlist
 		\begin{itemize}
-			\item accuracy: 99.62\%
-			\item loss: 1.6\%
+			\item accuracy: 99.66\%
+			\item loss: 1.45\%
 		\end{itemize}
 
 		% add recall precsition and f1-score
@@ -621,7 +638,7 @@ evaluating the LSTM model with the test data:
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=400px]{figures/LSTM_training_validation.png}
-			\caption{Accuracy curve}
+			\caption{Accuracy graph}
 			\label{fig:aa}
 		\end{figure}
 % to avoide funky layout
@@ -629,7 +646,7 @@ evaluating the LSTM model with the test data:
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=400px]{figures/LSTM_training_validation_loss.png}
-			\caption{ Loss curve}
+			\caption{Loss graph}
 			\label{fig:ff}
 		\end{figure}
 		
