@@ -379,9 +379,9 @@ In this step we will resample our dataset to get a better 1:1 ration between our
 the python code snippet uses the resample function from scikit-learn, it does the resampling we need to make our dataset balanced 
 
 \begin{itemize}
-	\item data x: all of those variables are our data which has been cleaned and separated according to the previously encoded categorical variables.
-	\item n samples: is the number of rows for each attack types, in this case we used 20000 rows.
-	\item random state: this is the resampling seed, by using the same seed number we can ensure that we always get the same results.
+	\item \texttt{data\_X}: all of those variables are our data which has been cleaned and separated according to the previously encoded categorical variables.
+	\item \texttt{n\_samples}: is the number of rows for each attack types, in this case we used 20000 rows.
+	\item \texttt{random\_state} : this is the resampling seed, by using the same seed number we can ensure that we always get the same results.
 	\item replace: replace decides whether or not the samples can be selected multiple times.
 \end{itemize}
 
@@ -390,13 +390,13 @@ the python code snippet uses the resample function from scikit-learn, it does th
 % change to pie and change colors
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=200px]{figures/unbalanced_donut.png}
+	\includegraphics[width=250px]{figures/unbalanced_donut.png}
 	\caption{Before data augmentation}
 	\label{fig:datasample}
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=200px]{figures/balanced_donut.png}
+	\includegraphics[width=250px]{figures/balanced_donut.png}
 	\caption{After data augmentation}
 	\label{fig:datasample}
 \end{figure}
