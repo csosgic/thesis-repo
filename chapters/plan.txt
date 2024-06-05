@@ -1,0 +1,162 @@
+
+
+
+CHAPTER 1: State of the Art (15 pages)
+Introduction (2 pages)
+    1.1 Project Context and Area: Introduce the context and area of smart grid communication infrastructure and the importance of cybersecurit  y.
+    1.2 Related Works: Discuss the current state of research in smart grid cybersecurity and identify gaps in the existing literature.
+State of the Art (8 pages)
+    1.3.1 Overview of Smart Grid Communication Infrastructure: Describe the components and architecture of smart grid communication infrastruct ure.
+    1.3.2 Cybersecurity Threats in Smart Grids: Discuss the various types of cyber threats faced by smart grids and their potential impacts .
+    1.3.3 Current Cybersecurity Solutions: Review existing cybersecurity solutions for smart grids, highlighting their strengths and limitations.
+Synthesis and Discussion (3 pages)
+    1.4.1 Summary of Key Findings: Summarize the key findings from the state of the art review.
+    1.4.2 Gaps and Limitations: Identify gaps and limitations in the existing research and highlight the need for further investigation.
+Conclusion (2 pages)
+    1.5.1 Summary of the State of the Art: Summarize the key points from the state of the art review.
+    1.5.2 Contribution of the Project: Highlight the contribution of the project in addressing the identified gaps and limitations.
+
+
+
+CHAPTER 2: Contributions (20 pages)
+Introduction (2 pages)
+    2.1 Theoretical Proposal: Introduce the theoretical proposal of the project, including the project description, formal or semi-formal project design, system architecture, and process used in project development.
+Implementation and Experiments (12 pages)
+    2.2.1 Implementation Details: Describe the implementation details of the proposed solution, including any technical or methodological approaches used.
+    2.2.2 Experimental Results: Present the experimental results obtained from implementing the proposed solution, including any data or statistics collected.
+Conclusion (6 pages)
+    2.3.1 Summary of Key Findings: Summarize the key findings from the implementation and experiments.
+    2.3.2 Contributions and Implications: Highlight the contributions and implications of the project, including any potential applications or future directions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+
+1. loading data
+2. exploratory data analysis (EDA) (data visuals, understanding and analysis) (optional)
+3. data visualize
+
+I. preprocessing data
+    1. drop columns with missing and null values
+    special: (network_data3.drop(columns=['Flow ID', 'Src IP', 'Src Port', 'Dst IP'], axis=1,inplace=True))
+    2. label encoding (OR Encoding the categorical variables )
+    3. maybe augmentation
+    4. splitting the data (training/testing)
+    5. creating the model and starting the training (.fit)
+
+II. deep learning algorithms used
+    1. CNN (show the model code)
+    2. LSTM (show the model code)
+    2. maybe a hybrid (show the model code)
+
+
+III. results
+    presision
+    recall
+    f1-score
+    table maybe comparison
+    confusion matrix
+
+IIII. deployment
+
+
+
+VI. conclusion
+
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+
+
+
+
+##############################################################
+##############################################################
+##############################################################
+##############################################################
+
+I. Contributions
+    introduction
+    2. Theoretical Proposal
+        a. project description
+        b. project design
+        c. systems architecture
+        d. process used in project development
+    2. Implementation et Experiments
+    conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I. Contributions
+    Introduction
+        In this chapter, we present the key contributions of our project on developing a deep learning-based intrusion detection system for the cybersecurity of smart grid communication infrastructure. The increasing reliance on smart grid technology has led to a significant expansion of the communication infrastructure, which has, in turn, created new vulnerabilities and opportunities for cyber threats. To address this challenge, we propose a deep learning approach that leverages Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks to improve the accuracy and effectiveness of intrusion detection in smart grid communication infrastructure.
+    Theoretical Proposal
+        a. Project Description
+        The primary objective of this project is to design and implement a deep learning-based intrusion detection system that can effectively detect and mitigate cyber threats in smart grid communication infrastructure. The proposed system will utilize a combination of CNN and LSTM architectures to capture both the spatial and temporal features of network traffic data, enabling it to identify complex and sophisticated attack patterns.
+        b. Project Design
+            The project design consists of the following key components:
+                - Data Collection: Collect network traffic data from smart grid communication infrastructure using tools such as Snort or Bro.
+                - Data Preprocessing: Preprocess the collected data to extract relevant features and prepare it for the deep learning models.
+                - Feature Engineering: Engineer features from the preprocessed data using techniques such as PCA, t-SNE, or autoencoders to enhance the performance of the deep learning models.
+                - CNN-LSTM Model: Implement a hybrid deep learning model that combines CNN and LSTM architectures to capture both spatial and temporal features of the network traffic data.
+                - Model Training and Evaluation: Train the deep learning model using the engineered features and evaluate its performance using metrics such as accuracy, precision, recall, and F1-score.
+                - Model Deployment: Deploy the trained deep learning model in the smart grid communication infrastructure to detect and mitigate cyber threats in real-time.
+        c. System Architecture
+            The system architecture for the proposed deep learning-based intrusion detection system consists of the following components:
+                - Data Collection Module: Responsible for collecting network traffic data from the smart grid communication infrastructure.
+                - Data Preprocessing Module: Preprocesses the collected data to extract relevant features and prepare it for the deep learning models.
+                - Feature Engineering Module: Applies feature engineering techniques to enhance the performance of the deep learning models.
+                - CNN-LSTM Model: The hybrid deep learning model that combines CNN and LSTM architectures to detect intrusions in the smart grid communication infrastructure.
+                - Evaluation Module: Evaluates the performance of the deep learning model using various metrics.
+                - Deployment Module: Deploys the trained deep learning model in the smart grid communication infrastructure for real-time intrusion detection and mitigation.
+        d. Process Used in Project Development
+            The project development process consists of the following steps:
+                - Data Collection: Collect network traffic data from the smart grid communication infrastructure using tools such as Snort or Bro.
+                - Data Preprocessing: Preprocess the collected data using techniques such as normalization, feature scaling, and data transformation.
+                - Feature Engineering: Engineer features from the preprocessed data using techniques such as PCA, t-SNE, or autoencoders.
+                - CNN-LSTM Model Implementation: Implement the hybrid deep learning model using a deep learning framework such as TensorFlow or PyTorch.
+                - Model Training and Evaluation: Train the deep learning model using the engineered features and evaluate its performance using the metrics mentioned above.
+                - Model Deployment: Deploy the trained deep learning model in the smart grid communication infrastructure to detect and mitigate cyber threats in real-time.
+    Implementation and Experiments
+        [Describe the implementation details and experimental results of the proposed deep learning-based intrusion detection system.]
+    Conclusion
+        [Summarize the key findings and contributions of the project, and discuss the implications and future directions.]

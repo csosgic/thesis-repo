@@ -1,0 +1,106 @@
+
+
+
+
+
+\chapter{Implementation} \label{chap:Implementation}
+\section{Introdution}
+%% incomplete
+In this chapter, we will put into practice our proposed approach which is a deep learning model of an IDS that utilises the LSTM algorithm of deep learninglearning
+
+in the previous chapter in order to test its feasibility and evaluate the results in a study of cases. The objective is to measure the degree of success of our approach. To do this, We will start by proposing a specific 
+XXXXXXX (our specifics)
+which will improve the detection accuracy in smart grid networks
+
+
+
+
+
+
+\section{Case study description}
+the project is general purpose NIDS for all control center devices of a smart grid
+attacks and their targets and consequences in the simulation
+% speak about  how this IDS can be used for smart grid maybe
+
+
+
+
+
+
+\section{Dataset}
+The IDS 2018 dataset is the data set used for this project, this dataset is a comprehensive and realistic dataset for intrusion detection systems. it was created through a collaboration effort between the Communications Security Establishment (CSE) and the Canadian Institute for Cybersecurity (CIC). It includes a few types of attacks such as Brute-force, Botnet, DoS, DDoS and Web attacks, also network infiltration from within all of which are a common attack on smart grid systems. This resulted in 16,233,002 traffic samples which were collected over 10 days from ten real networks, an unusual feature of this data set is its imbalance in benign to malicious ratio of cases. The CICFlowMeter-V3 generates 80 features extracted from the network traffic which describe various intrusions along with abstract distribution models for applications, protocols or even lower level networking entities. Researchers widely employ this dataset to analyze their IDS performance in different research works while others use it to build advanced IDS models.
+
+
+
+
+\section{Data preprocessing}
+
+
+It is a very essential process and the first step to train a machine learning model is data preprocessing and it is the process of cleaning,T ransforming and organizing the dataset in different formats before feeding the machine learning algorithms that is used to extract hidden patterns from the raw data. Data preprocessing is improving dataset quality by solving issues like missing values, in-valid values and inconsistencies
+
+
+Data preprocessing is a crucial step and the first step in training a machine learning model is data preprocessing, which involves cleaning, transforming and organizing the dataset before it can be utilized by the machine learning algorithms. Data preprocessing entails improving dataset quality by solving problems such as missing values, invalid values and inconsistencies.
+
+
+Data preprocessing techniques include cleaning the data to get rid of errors, normalizing the data so that features have the same scale, and feature engineering which will result in new informative variables. Preparing the data effectively ensures that machine learning models can accurately learn patterns increasing their performance and hence more accurate results.
+
+
+
+\begin{itemize}
+	\item importing data
+	\item SMOTE oversampling(optional)
+	\item cleaning data
+		\begin{itemize}
+			\item removing null values
+			\item removing infinity or invalid values
+			\item removing duplicates
+		\end{itemize}
+	\item Encoding the categorical variables
+	\item Recursive Feature Elimination (selecting features to use)
+	\item feature importance classification
+\end{itemize}
+
+
+
+\section{Internet activity classification (benigne/ddos/.....)}
+
+\section{constructing the DL model}
+\subsection{implementing CNN model}
+\subsection{implementing LSTM model}
+
+\section{result discussion}
+\section{implementing the platforme}
+\section{validation}
+
+training time
+training time
+
+(FP/TP/FN/TN)
+accuracy
+recall
+F1-score
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{conclusion}
+

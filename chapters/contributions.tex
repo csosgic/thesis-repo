@@ -1,333 +1,235 @@
-\chapter{Intrusion Detection Systems} \label{chap:Intrusion Detection Systems}
-
-
-\section*{Introduction}
-With the birth of the smart grid as the next step of evolution for grid infrastructure, with the improvements that the smart grid came with, like improved reliability, automation, and faster detection and response to failures, it also came with its own set of risks and disadvantages. mainly due to the fact that it is composed of multiple components and systems that are connected to the internet, like wireless networks and sensors, smart meters, and IoT devices, making it an easy target for hackers. independent groups or state actors whose goal is to cause as much damage as possible or to collect valuable data. On top of those components, there are legacy systems that the smart grid relies on that are known for their many and major security vulnerabilities, which are all easy targets, for example, Supervisory Control and Data Acquisition (SCADA). As an example of those risks and weaknesses, we can look at the situation Ukraine found itself in after Russia targeted their smart grid systems in 2015, leaving 80,000 Ukrainian households without power for 3 to 6 hours. \cite{ukrain-sg-attack}.
-
-That's why it is important to protect the smart grid system from cyberattacks by employing IDS, IPS, and IDPS. 
-as the second line of defense in case encryption and authorization were unsuccessful in stopping the cyberattack from targeting the smart grid system.
-
-\newpage
-
-
-
-
-\section{Intrusion detection systems (IDS)}
-An intrusion detection system is a piece of hardware or software that is responsible for detecting suspicious and malicious activity, and in a network or an information system, the anomaly can either be reported to a systems administrator or saved to a security information and even management system (SIEM), the SIEM combines the output from multiple sources, then uses some filtering techniques to decide if the reported activity is malicious. \cite{ids-def}
-An IDS on its own cannot stop intrusions; it can only detect and report them. However, with its evolution, the intrusion prevention system (IPS) or intrusion detection and prevention system (IDPS) can counter an attack. \cite{ibm-ids}
-
-
-
-
-
-
-
-
-\section{Intrusion detection systems architecture}
-Intrusion detection systems, like any complex system, are made of multiple interoperating components with a specific task assigned to each component. Although the functioning of an IDS changes vastly between different types of IDSs (different in deployment or detection methods), they all share a common general architecture, which is composed of the following components as shown in Figure \ref{fig:arch_IDS} \cite{arch-IDS}:
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=400px]{figures/arch_IDS.png}
-	\caption{IDS architecture \cite{arch-IDS}}
-	\label{fig:arch_IDS}
-\end{figure}
-
-\firmlist
-\begin{itemize}
-	\item Data gathering components (sensor): tasked with collecting information from the monitored environment.
-	\item Detector (IDS engine): analyzes the data collected by the sensor to determine the presence of suspicious activity.
-	\item Knowledge base(database): the database that stores information collected previously by sensors about known attacks that allows the engine to determine the suspesious activity.
-	\item Configuration component: defines settings and the behaviour of the system.
-	\item Response component: this component is responsible for responding to the detected intrusion and either attempts to prevent the intrusion (IPS) or reports it to a human administrator (IDS).
-\end{itemize}
-
-
-
-\section{Intrusion detection systems classification}
-Intrusion detection systems are classified according to two criteria of classification, which as shown in Figure \ref{fig:IDS-classification-taxonomy} are:
-
-\firmlist
-\begin{itemize}
-	\item deployment method \cite{ids-classification}
-	\item detection method \cite{ids-classification}
-\end{itemize}
-
-
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=400px]{figures/IDS_classification.pdf}
-	\caption{IDS classification taxonomy}
-	\label{fig:IDS-classification-taxonomy}
-\end{figure}
-
-
-
-\subsection{Deployment methods}
-The deployment of IDS involves several methods that ensure effective monitoring and detection of potential threats. Here are some common deployment methods for IDS.
-
-\subsubsection{NIDS}
-Network intrusion detection systems are the most commonly used commercial IDS. They are usually placed at the start edge of the sub-network, right after the firewall (if one exists), so they can have access to all inbound traffic to all devices on the network \cite{NIST-IDS}. NIDS protects the networks from cyber attacks and threats by scanning and monitoring TCP/IP packets for known attack signatures and reporting them to the administrator \cite{NIDS-ip-tcp}
-
-Some benefits of using a NIDS are that a few well-placed NIDS can be enough to cover an entire large network. In addition, their deployment requires minimal refactoring of the network, meaning easy installation \cite{NIST-IDS}. But the downsides are that they cannot detect threats with inaccurately constructed attack signatures and cannot analyze encrypted traffic, and it is hard to work with networks operating at 10 Gbps \cite{NIDS-ip-tcp}.
-
-With a NIDS, one would ideally scan all inbound and outbound traffic; however, doing so might create a bottleneck that would impair the overall speed of the network.
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=300px]{figures/NIDS.png}
-	\caption{NIDS \cite{geeksforgeeks}}
-	\label{fig:NIDS}
-\end{figure}
-
-
-
-\subsubsection{HIDS}
-Unlike NIDS, HIDS run on individual devices in a network, making it's threat detection scope more focused. They monitor all incoming and outgoing traffic and alert the administrator if suspicious or malicious activity is detected.
-
-It is considered to be more reliable than NIDS because it has access to files in the operating system, and it can detect if a file has been tampered with by keeping snapshots of previous versions of those system files and comparing them to the current version to decide if it has been tampered with. \cite{NIST-IDS}
-
-This type of IDS uses 2 sources of information inside the device's operating system:
-
-\firmlist
-\begin{itemize}
-	\item system audit trails: operating system audit trails are created by the kernel making them very detailed because the kernel has access to everything in an OS. \cite{NIST-IDS}
-	\item system logs: less complex the system audit trails making them easier to understand. \cite{NIST-IDS}
-\end{itemize}
-
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=300px]{figures/HIDS.png}
-	\caption{HIDS \cite{geeksforgeeks}}
-	\label{fig:HIDS}
-\end{figure}
-
-
-
-\subsubsection{Other types of IDS}
-uncommon types with specific functions usually, used together with NIDS or HIDS to augment their detection capabilities.
-
-\firmlist
-\begin{itemize}
-	\item Protocol intrusion detection system (PIDS): this type of IDS monitors the protocol in use (like HTTP or HTTPS) between the server and the client. PIDS is usually placed at the front end of the server. \cite{geeksforgeeks}
-
-
-	\item Application protocol detection system (APIDS): specialized in application security, it analyzes the packets of application-specific protocols (like MySQL) to determine the presence of suspicious activity. APIDS are usually placed on groups of servers. \cite{geeksforgeeks}
-	
-
-	\item hybrid detection system: it is a combination of two or more of any of the previously defined IDSs. It is more reliable than any individual IDS because it has access to the data accessible to all of the used IDSs, providing it with a network-wide view.
-	\cite{geeksforgeeks}
-\end{itemize}
-
-
-
-
-\subsection{Detection methods}
-There are two primary methodes of detection for IDS which are anomaly-based and signature-based (which is also known as misuse intrusion detection or knowledge-based intrusion detection). \cite{ids-classification}
-
-
-
-\subsubsection{Signature-based detection}
-SIDs define patterns in known cyberattacks and store them in a database as signatures. The SID then analyzes system activity and search for a pattern of suspicious activity that matches previously documented attacks's signatures. This method provides high detection capabilities against known attacks. even though it cannot detect new attacks. On top of that, the database of previous attacks is very large, and having to compare internet packets to this database is resource- and time-consuming. \cite{NIST-IDS}
-
-
-
-\subsubsection{Anomaly-based detection}
-AIDs can identify abnormal behaviour in the environment it is used in, this type of IDS first observes and models the normal behaviours then compares the trffic to this model to determine the presnece of suspesious activity. the constructed model is created based on the data collected by observing the behaviour of the system over a specific period of time of normal operation. \cite{NIST-IDS}
-
-AIDs often lead to a lot of false negatives because the normal activity varies alot over time, althout it is better than SIDs in detecting new and unknown attacks. it can also be used to provide new data for the signature-based detection systems. \cite{NIST-IDS}
-
-
-
-
-\subsubsection{Hybrid detection}
-Hybrid IDS uses both Signature based and anomaly based detection althout it's not widely used because it is still in development. \cite{NIDS-ip-tcp}
-\clearpage
-
-\subsubsection{Signature-based VS Anomaly-based detection}
-table of pros and cons
-sigVSano.tex
-\begin{table}[h]
-	\centering
-	\caption{An example of tables}
-	\input{tables/sigVSano}
-	\label{tab:example}
-\end{table}
-
-
-The biggest disadvantage of an IDS is its inability to react to attacks and actively block malicious activity. That's why it was necessary to create a new system to overcome those drawbacks, which is IDPS, also known as IDPS, IDPS just like IDS monitors the activity of a network or a host scanning for attacks or malicious acitvity, the difference between them is that IDPS can actively block and prevent intrusions which it detects, IDPS can drop malicious internet packets, block traffic from a certain IP address or to a certain host, server, application or any targeted resource, it can also detect reconnaissance activity like port and host scans which indecates a potential future attack.
-
-\section{Evolutions of IDS: IPS/IDPS}
-The main drawback of an IDS is its inability to perform a response for the attack and actively prevent malicious activity. Because of that, a new system was developed to remove those vulnerabilities, and called IDPS, even though IDPS is similar to IDS when monitoring the network or host for the presence of attacks or malicious activity, it is different from IDS as it can be used to prevent such intrusion automatically, for example it can drop malicious packets from the internet, block or ban the IP address or the suspected traffic to the host, server or application, etc, Additionally, it is also able to recognise reconnaissance, such as port and host scans, which would suggest a future possible attack. \cite{NIST-IDPS}
-
-
-
-\section{IPS/IDPS classification}
-Just like IDS, IDPS is classified based on two criteria, including their deployment and detection methods as shown in Figure \ref{fig:IDPS-classification-taxonomy} are:
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=400px]{figures/IDPS_classification.pdf}
-	\caption{IDPS classification taxonomy}
-	\label{fig:IDPS-classification-taxonomy}
-\end{figure}
-
-
-
-
-\subsection{Deployment methods}
-\subsubsection{Network-based Prevention System (NIPS)}
-A network-based prevention system (NIPS) is a network-based intrusion prevention system. It checks all internet packets inbound and outbound in a network, making it possible to detect suspicious activity. these monitoring devices are placed at a strategic point right at the start of a sub-network, usually being right behind the firewall. NIPS might also be placed within the network to watch over movement of data from important assets such as critical data centers or any other device. \cite{IBM-IPS}
-
-\subsubsection{Wireless-based Prevention System (WIPS)}
-A wireless intrusion prevention system (WIPS) is designed to monitor wireless network protocols for any signs of suspicious activity, like unauthorized users or devices connected to the the wifi in question. Once a WIPS notices that an unknown entity has connected to a wireless network, it can automatically cut the connection. A WIPS can also be utilized to recognize misconfigured and unsecure devices operating on a wifi network, and set up even to intercept man-in-the-middle attacks.\cite{IBM-IPS}
-
-\subsubsection{Host-based Prevention System (HIPS)}
-A host-based intrusion prevention system (HIPS) is installed in a particular device such as a laptop or server and monitors only the traffic that comes and goes through it. HIPS are commonly paired up with NIPS to provide additional protection for critical assets. In addition, HIPS can stop malware from moving between devices on the same network, as may happen when ransomware is unleashed.\cite{IBM-IPS}
-
-\subsubsection{Network Behaviour Analysis (NBA) System}
-A network behavior analysis (NBA) is a type of IPS that monitors the packets of a network, but unlike other types of IPS, this one focuses on high-level details like source/distonation IP addresses, ports, and the number of packets transmitted by those IP addresses. It uses an anomaly-based detection method that is effective in detecting and blocking abnormal behavior like DDoS attacks and communications with malware-infected devices.\cite{IBM-IPS}
-
-
-\subsection{detection methods}
-
-detection methods are the same in IPS as in IDS with stateful protocol analysis beign exclusive to IDPS, IDPS usually uses multiple detection methodes at the same time to broaden it's detection rates. \cite{NIST-IDPS}
-
-IDPS has 3 primary detection methodes:
-
-
-\begin{itemize}
-	\item Signature-based: Signature based detection is fairly similar to that of IDS with the difference beign that IDPS is capable of blocking or countring the detected intrusion
-	\item Anomaly-based: the same thing applies to Anomaly-based detection as the detection phase is the same between IDS and IDPS
-	\item Stateful protocol analysis applies the technique of comparing observed user behavior with predefined profiles that define what is regarded as normal activity. What sets it apart from anomaly-based detection is that stateful protocol analysis employs vendor-specific profiles which define normal behavior of a protocol. In this type of IPS, network, transport, and application layer protocol states will be tracked in order for the Intrusion Detection Prevention System (IDPS) to understand the state transitions. Consequently, when a user logs into an FTP session in an unauthenticated state, he can only execute basic commands such as viewing help information or providing login credentials. As a result, this allows the Intrusion Detection and Prevention System to differentiate between suspicious and benign actions by checking whether they conform to what is expected at that particular point or not after pair requests with responses and successfully authenticating. \cite{NIST-IDPS19-20}
-	
-
-\end{itemize}
-
-
-
-
-
-
-
-
-
-\section{Cyberattacks on smart grid and their classification}
-the Smart grid is suseptibale to a wide variety of cyberattacks like malicious code, jamming, spoofing, injections, traffic eavesdropping, and social engineering just to name a few
-
-on this project we will be looking at some of the most commonly used attacks
-
-%add more
-
-\subsection{cyberattack types}
-\subsubsection{Denial-of-service attack}
-A denial-of-service attack is an attack in which the perpetrator sends a large amount of traffic to the target to overload it and render a service or a server incapable of processing legitimate user requests. \cite{dos}, some types of denial of service attacks are:
-\begin{itemize}
-	\item SYN flood: This happens when the attacker sends a 3-way handshake request without completing it, leaving the server waiting for a response and wasting time and resources that could be used by a legitimate user. \cite{dos}
-	\item smurf attack: the attacker sends ICMP (Internet Control Message Protocol) broadcast packets to some hosts in the network with a spoofed source IP address that is the IP of the target, those hosts would then respond to the spoofed IP address, flooding the target with those responses. This usually happens because of a misconfiguration of the devices on the network. \cite{dos}
-\end{itemize}
-
-Another version of DoS attacks is the distributed denial-of-service attack (DDoS), and what sets it apart from a normal DoS attack is the number of devices used in attack. DDoS usually leverages the use of botnets, which are infected machines controlled by the attacker. Having more devices means the ability to send an even larger amount of traffic to the target and also makes it harder to identify the attacker. \cite{dos}
-	
-
-\subsubsection{Malicious software}
-Malware, which stands for malicious software, is a computer- and user-harming program that steals information, corrupts files, or disrupts computers. Its wide presence greatly threatens the security of computers, thus hindering network growth and targeting network-based applications. Malware makers keep upgrading their tactics to avoid being detected by using encryption and morphing techniques such as polymorphism and metamorphism. Signature-based detection methods work well with known malware but struggle with new ones, especially those that are polymorphic. On the other hand, heuristic-based detection usually gives false negatives and positives despite its ability to identify both new and existing malicious programs. Therefore, machine-learning algorithms combined with data-mining techniques are incorporated into existing approaches for fighting against ever-changing malware threats in order to enhance the accuracy of detection. \cite{malware} Malware has multiple types. some of which are:
-
-	\begin{itemize}
-	\item Viruses: Viruses need a host program or file to infect and propagate in a system. They remain dormant until the host is executed; then, they insert their code into other programs, copy themselves, damage files and spread to more devices. Viruses depend on human interaction for their activation and spreading from one computer to another. some of the consequences of this type of malware are performance issues, data or money loss, privacy invasion, and large-scale and nation-state attacks. \cite{virusVSworm}
-	\item Worms: Worms are independent programs which do not require any hosts. They can reproduce themselves and propagate automatically in a system without being activated by humans leading them to spread very fast often throughout a local network, sometimes at exponential rates. Security vulnerabilities may allow worms into a system without user's consent. Worms are generally considered more dangerous than viruses due to their ability to spread more quickly and without human interaction.\cite{virusVSworm}
-	\item Trojans: A trojan horse usually appears as a harmless piece of software, once it is installed on a system it is a  dangerous malware. This malicious application often disguises as a legitimate file in email attachments or free software, waiting for the user to download them or click on them. Once infiltrated, the Trojan can carry out multiple functions as coded by it's author. The infection occurs after a user downloads a file containing the server side of the malicious software, which is then set up once it has been downloaded, the attacker spams emails to a lot of users with a torjan horse attached for download hoping those users will download it. Infected systems can infect other devices, forming a botnet.\cite{torjanhorse}
-	\end{itemize}
-
-Another type of Malware is Exploit kits which is used by cyber criminals to identify vulnerabilities in software or an operating system, then upload malicious code and execute it on their device. Those kits automatically exploit software vulnerabilities, often because the software is outdated. They work by redirecting the victim to compromised websites to identify vulnerabilities in their system and decides which exploits to use and uploading it to the user. If it succeeds, it downloads and executes a malicious piece of code that gives the attacker access to the victim's machine. \cite{exploit-kit}
-
-\subsubsection{injection attacks}
-code injection attacks is when a cyber criminal is capable of editing
-%need to complete
-
-\subsubsection{replay of messages}
-The replay attack takes place when a cyber criminal intercepts and forwards a secure network communication messages to deceive the recipient into doing something he is not allowed to do. reply of messages is very dangerous because no advanced decryption techniques are needed, only resending of the intercepted message, a captured message that is resent can be successful in this attack since it appears genuine due to its original encryption. One instance in real life involves a staff member who sends an encrypted message to the financial administrator requesting for a transfer of money. This message is intercepted, copied and then sent again by an attacker.The financial administrator sees that the request is properly encrypted hence would respond appropriately unless suspiciousness occurs. Consequently, this could lead to remitting of huge amount of money into the account of the hacker. \cite{replay}
-
-
-
-
-
-\section{IDPS usage in smart grid}
-required to be able to do :
-
-\firmlist
-\begin{itemize}
-	\item detecting wide range of intrusions
-	\item fast detection
-	\item accuracy (FP/FN/TP/TN)
-	\item resource efficient
-	\item scalable
-	\item easy to operate (user friendly)
-\end{itemize}
-
-
-
-
-\section{conclusion}
-
-
-
-
-
-
-
-
 
 
 
 
 
 \chapter{Implementation} \label{chap:Implementation}
-\section{Introdution}
+\section*{Introdution}
 %% incomplete
-In this chapter, we will put into practice our proposed approach which is a deep learning model of an IDS that utilises the XXX algorithm of learning
+%In this chapter, we will put into practice our proposed approach which is a deep learning model of an IDS that utilises the LSTM algorithm of deep learninglearning
 
-in the previous chapter in order to test its feasibility and evaluate the results in a study of cases. The objective is to measure the degree of success of our approach. To do this, We will start by proposing a specific 
-XXXXXXX (our specifics)
-which will improve the detection accuracy in smart grid networks
+%in the previous chapter in order to test its feasibility and evaluate the results in a study of cases. The objective is to measure the degree of success of our approach. To do this, We will start by proposing a specific 
+%XXXXXXX (our specifics)
+%which will improve the detection accuracy in smart grid networks
 
-
-
-
-
-
-\section{Case study description}
-attacks and their targets and consequences in the simulation
-
-
-
-\section{development tools used}
-\subsection{Work environment}
-
-
-\subsubsection{jupyter notebook}
-is an open source web application or a vscode extension that facilitates the creation and sharing of segmented documents that contains blocks of interactive code, text and data visualations , it is mostly used for data science, machine learning and scientific computing, it supports a wide range of programming languages like python, R, scala and julia, it can also display some text formats like 
-
-
-\subsubsection{VScode}
-
-
-
-\subsection{programming langues}
-\subsubsection{python3}
-An important aspect of Python lies in its being more than just an object-oriented programming language because it supports other programming paradigms, which are procedural and functional programming making it flexible when choosing the desired approach. It has user-friendly syntax making it easy to digest even for beginner, This has led to the rise of Python's ecosystem fostered by active community coupled with simplicity behind coding style making it easily accessible by almost everyone. To further improve its capability and functionality, python boast a wide range of third party packages that can easily be installed through Python package manager called pip. Python was created in 1991 by Guido van Rossum. A major landmark came in 2008 with the development of python3 which introduced several improvements and enhancements to the language thereby cementing its place as a valuable flexible programming tool on earth today. \cite{python}
+In this chapter, we present our contributions towards the deep learning-based intrusion detection system for the smart grid. due to the fact that smart grid communication requires connecting to the internet, smart grid components now have a new weakness which is cyber-threat. In order to counter this issue, we suggest a deep learning method that utilizes Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) which is a specific type of Recurrent Neural Network (RNN) to enhance the precision and efficiency of identifying intrusions within the smart grid communication infrastructure.
+% mention DoS and DDoS here
 
 
 
 
 
+\section{Theoretical Proposal}
 
-libraries that are useful for the development:
+\subsection{Project Description}
+the proposed system for the project is a network intrusion detection system based on deep learning that will depend on either CNN or LSTM as a learning algorithme. This project mainly aims at designing and implementing said system that can detect cyber threats in Smart Grid Communication Infrastructure effectively.To capture both spatial and temporal features of network traffic data, the proposed system will use either CNN or LSTM architectures to identify complex and sophisticated attack patterns that would threaten the smart grid functionality.
+Our deep learning based network intrusion detection system will be mainly focused on denial of service attacks (DoS) and distributed denial of service attacks (DDoS).
+
+\subsection{Project Design and architecture}
+Building any machine learning or deep learning model usually involves several important steps, as shown in Figure  \ref{fig:DL-creation}.
+
+
+First, we need to collect data that is relevant to the function of the model we want to train, which we will then need to preprocess, which entails clearning, encoding, augmenting, and standardising the data to prepare it for the training phase.
+
+
+The next step is to select a learning algorithm, the proper optimizer, a loss function, and the evaluation metrics that we will use to train our model.
+
+
+The model is then trained on the cleaned data, and this is where we feed the trained model new data it has not yet seen before and get the results and predictions on the new data.
+
+
+The next and final step is the validation step, in which we get the prediction results and evaluate the model accuracy, recall, and f1-score.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/DL_creation.jpg}
+	\caption{deep learning model creation}
+	\label{fig:DL-creation}
+\end{figure}
+
+
+
+
+
+
+
+
+
+\subsection{Deep learning Models architecture}
+Detecting cyber threats to the smart grid functionality and safety is crucial a task which needs high accuryacy of detection that's why we opted to  we choose two deep learning algorithms for intrusion detection which are CNN and LSTM
+
+
+
+%########################			########################################
+%########################			########################################
+%########################			########################################
+%########################			########################################
+%########################			########################################
+
+
+
+\subsubsection{CNN model}
+Convolutional Neural Networks (CNNs) are a highly-specific deep learning algorithm meant to analyze spatialy structured input data, like images and grid structured data. These are derived from the visual cortex of human beings and are good at image recognition, object detection and image segmentation among others. CNNs work by carrying out convolutional layers in order to capture local characteristics, pooling layers in order to reduce spatial dimensions and fully connected layers for predictions. They can be trained on labeled data and have proved very effective in several applications like face recognition, medical imaging analysis as well as self-driving cars.\cite{CNN}
+
+Note: will expande on this later
+
+% add graph
+%talk about layers maybe
+
+
+
+
+
+%########################			########################################
+%########################			########################################
+%########################			########################################
+%########################			########################################
+%########################			########################################
+%########################			########################################
+
+
+
+
+
+\subsubsection{LSTM model}
+Long Short-Term Memory (LSTM) is a type of Recurrent Neural Network (RNN) that was developed by Hochreiter and Schmidhuber; LSTM is different from RNNs because it can forecast sequences and study long-term dependency patterns from the provided data. What makes LSTMs unique is their ability to learn order dependency patterns which is critical in solving complex problems like speech recognition and machine translation.
+LSTM address the weakness of traditional RNN which is the unability to learn any long term patterns which it solves by introducing a memory cell, LSTM is controlled with Three gates control: input gate, forget gate, output gate.These gates determine what information to add, remove, and output from the memory cell and hence enable LSTM networks to learn long-term dependency patterns. \cite{lstm}
+
+Note: will expande on this later
+
+% add graph
+%talk about layers maybe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Implementation and Experiments}
+
+
+
+
+
+\subsection{Development tools used}
+\subsubsection{Development environment}
+training deep learning models requires a high performance PC due to the fact that these models require high computational resources to process large datasets and intricate neural networks.  With complex calculations and huge amounts of data. One of the reasons why having a powerful PC with a powerful GPU is important during the training process is that it can significantly shorten the time needed for the training, as well as reduce computational resources. a sufficient quantity of memory (RAM) is also needed to load big datasets, and fast storage devices like SSDs are vital in handling data-intensive nature of deep learning tasks.
+
+
+
+
+
+\begin{itemize}
+	\item jupyter notebook: is an open source web application or a vscode extension that facilitates the creation and sharing of segmented documents that contains blocks of interactive code, text and data visualations, it is mostly used for data science, machine learning and scientific computing, it supports a wide range of programming languages like python, R, scala and julia, it can also display some text formats like markdown, Latex and HTML.
+	\item VScode: Visual Studio Code (VS Code) is an open-source source-code editor developed by Microsoft for Windows, Linux, macOS, and web browsers. It is a popular choice among developers due to its extensive features like code highlighting, debugging, code completion, and the ability to extend its original functionality with 3rd-party extensions and extensibility. It also offers Git integration out of the box.
+\end{itemize}
+
+
+
+
+
+\subsubsection{programming languages}
+The programming language we mainly used is Python 3, important aspect of Python lies in its being more than just an object-oriented programming language because it supports other programming paradigms, which are procedural and functional programming making it flexible when choosing the desired approach. It has user-friendly syntax making it easy to digest even for beginner, This has led to the rise of Python's ecosystem fostered by active community coupled with simplicity behind coding style making it easily accessible by almost everyone. To further improve its capability and functionality, python boast a wide range of third party packages that can easily be installed through Python package manager called pip. Python was created in 1991 by Guido van Rossum. A major landmark came in 2008 with the development of python3 which introduced several improvements and enhancements to the language thereby cementing its place as a valuable flexible programming tool on earth today. \cite{python}
+
+libraries that are used for the development:
 
 \begin{itemize}
 	\item NumPy: NumPy is the primary array programming library for the Python language, with an essential role in research analysis pipelines across diverse fields such as physics, chemistry, astronomy, geoscience, biology, psychology, and more. The NumPy array is an efficient data structure that stores and accesses multidimensional arrays (tensors), enabling a wide variety of scientific computation. NumPy was initially developed by students, faculty and researchers to provide an advanced, open-source array programming library for Python, with a sense of building something consequential together for the benefit of many others. \cite{python}
@@ -337,46 +239,48 @@ libraries that are useful for the development:
 	\item Pandas: Pandas is a Python open source program meant for data management and analysis, it was started in 2008 by AQR Capital Management. It went public in late 2009 and has an active community of contributors. Some of the most important features associated with pandas are fast and efficient DataFrame object for data manipulation with integrated indexing, tools for reading and writing data between in-memory data structures and different formats, time series functionality like date range generation, frequency conversion, moving window statistics, and date shifting and highly optimized performance with critical code paths written in Cython or C. \cite{pandas}
 	
 
-	Matplotlib: Matplotlib is a 2D graphics package used for Python in application development, interactive scripting, and publication-quality image generation across user interfaces and operating systems. The author, John D. Hunter started using Python in 2001 and was initially frustrated by the lack of a graphics environment as powerful as MATLAB. 
 	
-	\item Matplotlib: Matplotlib is a 2D plotting library for Python which can produce publication quality plots, used in application development, interactive scripting and image creation on all operating system and user interface platforms. The author of Matplotlib John D. Hunter began using Python in 2001 and was initially frustrated at the lack of a powerful graphics environment like MATLAB's. He then developed Matplotlib to satisfy his needs, focusing initially on embedding it in a GUI for his ECoG application and then gradually adding support for other features like high-quality raster and vector output, support for mathematical expressions, and interactive use from the shell. %need to cite
+	\item Matplotlib: Matplotlib is a 2D plotting library for Python which can produce publication quality plots, used in application development, interactive scripting and image creation on all operating system and user interface platforms. The author of Matplotlib John D. Hunter began using Python in 2001 and was initially frustrated at the lack of a powerful graphics environment like MATLAB's. He then developed Matplotlib to satisfy his needs, focusing initially on embedding it in a GUI for his ECoG application and then gradually adding support for other features like high-quality raster and vector output, support for mathematical expressions, and interactive use from the shell.\cite{plot}
 
 
 	\item Seaborn: Seaborn is a python library for making statistical graphics, Seaborn is a high-level interface to Matplotlib and compatible with Pandas's data structures. Seaborn can provide the data with a dataset alongside plot specifications and automatically maps the values onto visual attributes such as color, size or style; internally seaborn performs the relevant statistical transformations and finally adds axis labels as well as legends for the plots. Many Seaborn functions can generate multi-panel figures for comparing different subsets of data or variable pairings within a dataset. By allowing quick prototyping and exploratory analysis of data in single-function calls with just a few arguments, Seaborn can be used throughout the scientific project cycle.  \cite{seaborn}
+		
+
+	\item scikit-learn: Sckit-learn is a Python library that provides various machine learning algorithms for medium-scale supervised and unsupervised problems. It focuses on making things easy, having good performance, documentation and remaining consistent in it's APIs. Scikit-learn depends on scientific Python ecosystem libraries such as NumPy and SciPy, and uses Cython to blend C/C++ with Python for improved performance. This lightweight software has few requirements and can be obtained by anyone without any major legal challenges since it is distributed under a simplified BSD license. It provides solid implementations of Machine Learning algorithms, documentation and community driven development, scikit-learn also includes some nice implementations of different algorithms outperforming other popular python ML libraries in many instances including SVMs, Lasso, Elastic Net, k-Nearest Neighbors, PCA, k-Means and some other algorithms.\cite{scikit-learn}
+
+
+	\item TensorFlow: TensorFlow is a free and open-source software library for machine learning and artificial intelligence. It gives you more flexibility and control the some of the other machine learning frameworks with features such as the Keras Functional API and the Sub-Classification API model to build complex neural network topologies. it offers fast execution for fast debugging and simple prototyping.\cite{tf}
 	
 
+	\item Keras: Keras is an open-source library that provides a Python interface for artificial neural networks. Keras was first independent software, then it was integrated into TensorFlow library, and later started supporting others like AJX and PyTorch.\cite{keras}
+
+
+
+
 	
-
-	\item scikit-learn:
-
-	\item optuna:
 
 \end{itemize}
 
 
 
 
-\subsection{how to use it (software environment)}
-in real life would be installed on a specialized software and placed near the firewall
-
-PYthon3
-uses pyQT+PYSIDE
-XML to specify ui file
 
 
-
-
-
-
-
-
-
-
-
-
-
-\section{Data generation}
-got it from kaggle
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
+%################################################################
 
 
 
@@ -384,73 +288,381 @@ got it from kaggle
 
 
 
-\subsection{Implementation}
-AI training steps
+
+
+
+
+\subsection{Dataset}\label{Dataset}
+The IDS 2018 dataset is the data set used for this project, this dataset is a comprehensive and realistic dataset for intrusion detection systems. it was created through a collaboration effort between the Communications Security Establishment (CSE) and the Canadian Institute for Cybersecurity (CIC). It includes a few types of attacks such as Brute-force, Botnet, DoS, DDoS and Web attacks, also network infiltration from within all of which are a common attack on smart grid systems. This resulted in 16,233,002 traffic samples which were collected over 10 days from ten real networks, an unusual feature of this data set is its imbalance in benign to malicious ratio of cases. The CICFlowMeter-V3 generates 80 features extracted from the network traffic which describe various intrusions along with abstract distribution models for applications, protocols or even lower level networking entities. Researchers widely employ this dataset to analyze their IDS performance in different research works while others use it to build advanced IDS models. This dataset is not specific to smart grid activity but it is a generalized dataset that includes generalized network traffic which would be the same in a smart grid.
+
+
+
+
+\subsection{Data preprocessing}
+Data preprocessing is a crucial step, and the first step in training a machine learning model is data preprocessing. It involves cleaning, transforming, and organising the dataset before it can be utilised by the machine learning algorithms. Data preprocessing entails improving dataset quality by addressing issues such as missing values, invalid values, and inconsistencies. Data preprocessing techniques include cleaning the data to get rid of errors, normalising the data so that features have the same scale, and feature engineering, which will result in new informative variables, augmenting the data, and resampling it to avoid bias in our model. Preparing the data effectively ensures that machine learning models can accurately learn patterns, increasing their performance and, hence, more accurate results.
+
+
+
+\subsubsection{importing data}
+First we load the data with Pandas library, and since our dataset is split into 10 files, we load the files which include the data related to DoS and DDoS attacks and we merge the data into the same variable for easier preprocessing while deleting the old variable to evoid uselessly fillig the memory, we also remove unneeded column from one of the dataset files
+
+\lstinputlisting[language=Python]{listings/loading_data.py}
+
+the total amount of data loaded is about 11 million rows with 80 columns all of which is either benign or DoS/DDoS traffic with a total size of 6.6 GB.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/data_example.png}
+	\caption{data sample}
+	\label{fig:datasample}
+\end{figure}
+
+as we can see in the Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_data_table} below, the data is unbalnced, but we will fix that later in the data preprocessing phase, specifically in the data augmentation phase.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/unbalanced_data.png}
+	\caption{data sample}
+	\label{fig:unbalanced_data}
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\caption{the number of occurrence for each traffic type}
+	\input{tables/unbalanced_data}
+	\label{tab:unbalanced_data_table} 
+\end{table}
+
+
+\newpage
+
+\subsubsection{Cleaning data}
+To clean our data we must first find and remove unwanted data like missing values, null values, duplicate rows and unneeded columns or features.
+
+
+\firmlist
+\begin{itemize}
+	\item finding and cleaning missing values: First we identify the columns that contain null values, in a our dataset by identifying columns with missing values,after which we decide to eliminat the rows containing null values, in a Dataset. The objective of this step is to eliminate missing data to ensure quality and consistency Data for the model training.
+	\lstinputlisting[language=Python]{listings/cleaning_nulls.py}
+	\item removing duplicate rows: we also remove duplicate rows for a better quality dataset and to avoid bias in our model.
+	\lstinputlisting[language=Python]{listings/cleaning_dups.py}
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Encoding the categorical variables}
+The LabelEncoder assigns a unique integer to each categorical value which is the label in our case which is the traffic type(benign or attack), which which allows them to be represented in a numerical form. This makes it easier to use of these variables in machine learning algorithms, as they can handle numerical values better.
+
+\lstinputlisting[language=Python]{listings/encoding_cat_var.py}
+
+
+
+
+
+
+\subsubsection{Augmenting the data}
+As we have stated before in section \ref{Dataset} that our dataset is unbalanced in the distribution between benign and malicious activity which is a bad thing because it will introduce bias, overfitting and poor prediction performance to our model.
+
+
+
+
+
+
+
+In this step we will resample our dataset to get a better 1:1 ration between our different categorical variables (benign and other attack types).
+
+\lstinputlisting[language=Python]{listings/resample.py}
+
+the python code snippet uses the resample function from scikit-learn, it does the resampling we need to make our dataset balanced 
+
+\begin{itemize}
+	\item data x: all of those variables are our data which has been cleaned and separated according to the previously encoded categorical variables.
+	\item n samples: is the number of rows for each attack types, in this case we used 20000 rows.
+	\item random state: this is the resampling seed, by using the same seed number we can ensure that we always get the same results.
+	\item replace: replace decides whether or not the samples can be selected multiple times.
+\end{itemize}
+
+
+
+% change to pie and change colors
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=200px]{figures/unbalanced_donut.png}
+	\caption{Before data augmentation}
+	\label{fig:datasample}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=200px]{figures/balanced_donut.png}
+	\caption{After data augmentation}
+	\label{fig:datasample}
+\end{figure}
+
+those resampled variables are then merged and are fed to the deep learning model for training.
+% this part's format is broken the pdf file
+
+
+
+
+
+\subsubsection{splitting the data for the deep learning model}
+%maybe add smething here idk
+In this step we split our data into 2 sets:
+\begin{itemize}
+	\item training data: 90\% of the total dataset
+	\item testing data 10\% of the total dataset
+\end{itemize}
+\lstinputlisting[language=Python]{listings/data_split.py}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+
+
+
+
+
+\subsection{Deep learning models implementation}
+
+
+
+
+\subsubsection{CNN model}
+% something here
+We built a deep learning model that uses CNN as a learning algorithm with 64 filters, ReLU as the activation function in Python
+
+
+CNN model summary
+\lstinputlisting[language=Python]{listings/CNN_model.py}
+
+% say something here
+deep learning model creation:
+\firmlist
+\begin{itemize}
+	\item Sequential(): Creates a Sequential model which is a linear stack of layers.
+	\item Conv1D(): adds one dimensional convolutional layer to the model, sets the feature filter and the activation function
+	\item MaxPooling1D(): adds one dimensional pooling layer to the model, which is used to reduce the spatial dimensions of the data 
+	\item Flatten(): used to convert the multidimensional output of the previous layers into a 1D vector
+	\item Dense(): a fully connected layer used to do the classification tasks
+	\item BatchNormalization(): used to normalize the data between different layers, it helps improve the model's performance
+	\item compile(): used to configure the model, it can set the following parameters:
+		\firmlist
+		\begin{itemize}
+			\item loss function: categorical crossentropy is used to compute the cross-entropy loss between the true class distribution and the predicted class distribution
+			\item optimizer: adam adapts the learning rate for each parameter individually making it effective for fast convergence and robustness.
+			\item metrics: accuracy is the precision of the predicion as a ratio of correct prediction to the total number of predictions which is a measure of the overall performance of the model. 
+		\end{itemize}
+\end{itemize}
+
+we also get a summary of the created model, this summary describes the arrangement of the model layers, the number of parameters of each layer, the output shape of each layer and the number of trainable and non-trainable parameters
+
+
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=300px]{figures/CNN_model_summary.png}
+	\caption{CNN model summary}
+	\label{fig:test}
+\end{figure}
+
+% add graph
+% reùove this title and continue
+
+Next step is starting the model training with 30 epochs, 32 batch sier and the validation data which is the test data we split from the original dataset earlier
+
+\lstinputlisting[language=Python]{listings/CNN_training.py}
+
+
+
+
+
+
+
+
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+%##############################################################
+
+
+
+
+
+
+\subsubsection{LSTM model}
+% say something
+The LSTM mode implementations is very similar to the CNN implementation with only a few challenges, with those changes being that CNN uses Conv1D() to create it's one dimensional convolutional layer, while LSTM uses LSTM() function to add it's layers 
+
+\lstinputlisting[language=Python]{listings/LSTM_model.py}
+
+
+
+
+we get a model summary for the LSTM model as well
 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=300px]{figures/ml_staps.jpg}
-	\caption{HIDS \cite{geeksforgeeks}}
-	\label{fig:HIDS}
+	\includegraphics[width=400px]{figures/LSTM_model_summary.png}
+	\caption{LSTM model summary}
+	\label{fig:test}
 \end{figure}
-cite https://onlinelibrary.wiley.com/cms/asset/4959b86a-b838-450c-ba2a-ae590e0b6d98/ett4150-fig-0005-m.jpg
 
 
 
 
-\subsubsection{Data preprocessing}
+
+
+
+
+
+
+
+
+
+\subsection{Results}
+In this we will compile the data from our models evaluation on the test data with both the CNN and the LSTM models, the metrics that we use for evaluation are mainly the detection accuracy and loss rate, we will also be looking at other mertics like
+some criteria of evaluation are:
+
 \begin{itemize}
-	\item importing data
-	\item SMOTE oversampling(optional)
-	\item cleaning data
-		\begin{itemize}
-			\item removing null values
-			\item removing infinity or invalid values
-			\item removing duplicates
-		\end{itemize}
-	\item Encoding the categorical variables
-	\item Recursive Feature Elimination (selecting features to use)
-	\item feature importance classification
+	\item Accuracy: Accuracy measures the overall correctness of a model's predictions. It is calculated as (TP + TN) / (TP + TN + FP + FN). Accuracy can be misleading, especially with imbalanced datasets.
+	\item precision: Precision measures the proportion of true positives among the positive predictions made by the model. It is calculated as TP / (TP + FP). Precision is useful when the cost of false positives is high, such as in spam detection.
+	\item F1-score: The F1 score is the harmonic mean of precision and recall. It ranges from 0 to 1, with 1 being best. The F1 score provides a balance between precision and recall. It is calculated as 2 * (Precision * Recall) / (Precision + Recall).
+	%\item confucsion matrix: A confusion matrix is a table that summarizes the performance of a classification model. It has actual values on one axis and predicted values on the other. The cells contain true positives (TP), true negatives (TN), false positives (FP), and false negatives (FN).
 \end{itemize}
 
+\subsubsection{CNN model}
+evaluating the CNN model with the test data:
+\firmlist
+		\begin{itemize}
+			\item accuracy: 99.66\%
+			\item loss: 1.44\%
+		\end{itemize}
+
+		% add recall precsition and f1-score
+		% add confucsion matrix
+		% images
+
+		% show 3 last epochs 
+		% show 2 graphs
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=400px]{figures/CNN_training_validation.png}
+			\caption{Accuracy curve}
+			\label{fig:aa}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=400px]{figures/CNN_training_validation_loss.png}
+			\caption{ Loss curve}
+			\label{fig:ff}
+		\end{figure}
+		
 
 
-\subsubsection{Internet activity classification (benigne/ddos/.....)}
-\subsubsection{Internet activity classification (benigne/ddos/.....)}
+\subsubsection{LSTM model}
 
 
-\subsubsection{result discussion}
+evaluating the LSTM model with the test data:
+\firmlist
+		\begin{itemize}
+			\item accuracy: 99.62\%
+			\item loss: 1.6\%
+		\end{itemize}
 
-training time
-training time
+		% add recall precsition and f1-score
+		% add confucsion matrix
+		% images
 
-(FP/TP/FN/TN)
-accuracy
-recall
-F1-score
+		% show 3 last epochs 
+		% show 2 graphs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=400px]{figures/LSTM_training_validation.png}
+			\caption{Accuracy curve}
+			\label{fig:aa}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=400px]{figures/LSTM_training_validation_loss.png}
+			\caption{ Loss curve}
+			\label{fig:ff}
+		\end{figure}
+		
 
 
 
-\section{conclusion}
+
+
+\paragraph{Observation}: We notice that the accuracy and the loss rates are almost matched between the CNN and the LSTM models. However according the validation accuracy compared to the number of epochs, the LSTM provides better accuracy over a wide rande of epochs(10 to 12 and 25 to30) unlike CNN which provides it's best accuracy over a narrow range of epochs(3 to 7 and 12 to 30).
+
+		
+
+
+
+
+
+
+
+\subsection{Conclusion}
+In this chapter we demonstrated the development of two different deep learning methodes for creating a network intrusion detection system that protects the smart grid from DoS and DDoS attacks, starting with the development environment, the architecture of the used algorithms, and the data preprocessing, cleaning and training the models, and finishing the chapter with a performance comparison between the two models.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
 

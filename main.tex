@@ -1,5 +1,25 @@
 \documentclass{masterthesis-uc2-en}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[caption=false]{subfig}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tbrl,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
 
 %% Metadata
 \department{Department of Fundamental Computing and its Applications (IFA)}
@@ -23,7 +43,7 @@
 	\setcitestyle{numbers}
 	\hypersetup{citecolor=blue}
 
-	%\include{front/acknowledgments}
+	\include{front/acknowledgments}
 	%\include{front/dedicate}  % Optional
 	
 	%\addcontentsline{toc}{chapter}{Abstracts}
@@ -32,17 +52,17 @@
 	%\input{front/abstract_fr}
 	%\clearpage
 	
-	%\tableofcontents
-	%\listoffigures
-	%\listoftables
+	\tableofcontents
+	\listoffigures
+	\listoftables
 	%\listofalgorithms  % Optional
 
 \mainmatter
 	\pagestyle{fancy}
-	%\include{chapters/introduction}
+	\include{chapters/introduction}
 	\include{chapters/state_of_the_art}
 	\include{chapters/contributions}
-	%\include{chapters/conclusion}
+	\include{chapters/conclusion}
 
 	% \include{chapters/template} % To remove in final version
 
