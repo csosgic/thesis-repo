@@ -299,16 +299,16 @@ The IDS 2018 dataset is the data set used for this project, this dataset is a co
 
 
 \subsection{Data preprocessing}
-Data preprocessing is a crucial step, and the first step in training a machine learning model is data preprocessing. It involves cleaning, transforming, and organising the dataset before it can be utilised by the machine learning algorithms. Data preprocessing entails improving dataset quality by addressing issues such as missing values, invalid values, and inconsistencies. Data preprocessing techniques include cleaning the data to get rid of errors, normalising the data so that features have the same scale, and feature engineering, which will result in new informative variables, augmenting the data, and resampling it to avoid bias in our model. Preparing the data effectively ensures that machine learning models can accurately learn patterns, increasing their performance and, hence, more accurate results.
+Data preprocessing is a crucial step, and the first step in training a machine learning model is data preprocessing. It involves cleaning, transforming, and organising the dataset before it can be used by the machine learning algorithms. Data preprocessing entails improving dataset quality by addressing issues such as missing values, invalid values, and inconsistencies. Data preprocessing techniques include cleaning the data to get rid of errors, normalising the data so that features have the same scale, and feature engineering, which will result in new informative variables, augmenting the data, and resampling it to avoid bias in our model. Preparing the data effectively ensures that machine learning models can accurately learn patterns, increasing their performance and, hence, more accurate results.
 
 
 
 \subsubsection{importing data}
-First we load the data with Pandas library, and since our dataset is split into 10 files, we load the files which include the data related to DoS and DDoS attacks and we merge the data into the same variable for easier preprocessing while deleting the old variable to evoid uselessly fillig the memory, we also remove unneeded column from one of the dataset files
+First, we load the data with the Pandas library, and since our dataset is split into 10 files, we load the files that include the data related to DoS and DDoS attacks, and we merge the data into the same variable for easier preprocessing while deleting the old variable to avoid uselessly filling the memory. We also remove an unneeded column from one of the dataset files.
 
 \lstinputlisting[language=Python]{listings/loading_data.py}
 
-the total amount of data loaded is about 11 million rows with 80 columns all of which is either benign or DoS/DDoS traffic with a total size of 6.6 GB.
+The total amount of data loaded is about 11 million rows with 80 columns, all of which are either benign or DoS/DDoS traffic, with a total size of 6.6 GB.
 
 \begin{figure}[h]
 	\centering
@@ -317,7 +317,7 @@ the total amount of data loaded is about 11 million rows with 80 columns all of 
 	\label{fig:datasample}
 \end{figure}
 
-as we can see in the Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_data_table} below, the data is unbalnced, but we will fix that later in the data preprocessing phase, specifically in the data augmentation phase.
+As we can see in Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_data_table} below, the data is unbalanced, but we will fix that later in the data preprocessing phase, specifically in the data augmentation phase.
 
 \begin{figure}[h]
 	\centering
@@ -342,9 +342,9 @@ To clean our data we must first find and remove unwanted data like missing value
 
 \firmlist
 \begin{itemize}
-	\item finding and cleaning missing values: First we identify the columns that contain null values, in a our dataset by identifying columns with missing values,after which we decide to eliminat the rows containing null values, in a Dataset. The objective of this step is to eliminate missing data to ensure quality and consistency Data for the model training.
+	\item Finding and cleaning missing values: First, we identify the columns that contain null values in our dataset by identifying columns with missing values, after which we decide to eliminate the rows containing null values from the dataset. The objective of this step is to eliminate missing data to ensure quality and consistency in the model training.
 	\lstinputlisting[language=Python]{listings/cleaning_nulls.py}
-	\item removing duplicate rows: we also remove duplicate rows for a better quality dataset and to avoid bias in our model.
+	\item removing duplicate rows: we also remove duplicate rows for a better-quality dataset and to avoid bias in our model.
 	\lstinputlisting[language=Python]{listings/cleaning_dups.py}
 \end{itemize}
 
