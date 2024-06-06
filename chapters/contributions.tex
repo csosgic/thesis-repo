@@ -306,7 +306,7 @@ Data preprocessing is a crucial step, and the first step in training a machine l
 \subsubsection{importing data}
 First, we load the data with the Pandas library, and since our dataset is split into 10 files, we load the files that include the data related to DoS and DDoS attacks, and we merge the data into the same variable for easier preprocessing while deleting the old variable to avoid uselessly filling the memory. We also remove an unneeded column from one of the dataset files.
 
-\lstinputlisting[language=Python]{listings/loading_data.py}
+\lstinputlisting[language=Python, caption={loading data}]{listings/loading_data.py}
 
 The total amount of data loaded is about 11 million rows with 80 columns, all of which are either benign or DoS/DDoS traffic, with a total size of 6.6 GB.
 
@@ -344,9 +344,9 @@ This is an important step, and executing it efficiently is necessary for accurat
 \firmlist
 \begin{itemize}
 	\item Finding and cleaning missing values: First, we identify the columns that contain null values in our dataset by identifying columns with missing values, after which we decide to eliminate the rows containing null values from the dataset. The objective of this step is to eliminate missing data to ensure quality and consistency in the model training.
-	\lstinputlisting[language=Python]{listings/cleaning_nulls.py}
+	\lstinputlisting[language=Python, caption={Cleaning data}]{listings/cleaning_nulls.py}
 	\item Removing duplicate rows: We also remove duplicate rows for a better-quality dataset and to avoid bias in our model.
-	\lstinputlisting[language=Python]{listings/cleaning_dups.py}
+	\lstinputlisting[language=Python, caption={Removing duplicates}]{listings/cleaning_dups.py}
 \end{itemize}
 
 
@@ -358,7 +358,7 @@ This is an important step, and executing it efficiently is necessary for accurat
 The LabelEncoder assigns a unique integer to each categorical value, which is the label in our case, which is the traffic type (benign or attack type), which allows them to be represented in a numerical form. This makes it easier to use these variables in machine learning algorithms, as they can handle numerical values better.
 
 
-\lstinputlisting[language=Python]{listings/encoding_cat_var.py}
+\lstinputlisting[language=Python, caption={Encoding the categorical variables}]{listings/encoding_cat_var.py}
 
 
 
@@ -371,7 +371,7 @@ As we have stated before in Section \ref{Dataset}, our dataset is unbalanced in 
 
 
 
-\lstinputlisting[language=Python]{listings/resample.py}
+\lstinputlisting[language=Python, caption={resampling the dataset}]{listings/resample.py}
 
 
 
@@ -413,7 +413,7 @@ In this step we split our data into 2 sets, training and testing sets:
 	\item training data: 90\% of the total dataset
 	\item testing data 10\% of the total dataset
 \end{itemize}
-\lstinputlisting[language=Python]{listings/data_split.py}
+\lstinputlisting[language=Python, caption={Splitting the dataset}]{listings/data_split.py}
 
 
 
@@ -460,7 +460,7 @@ In this step we implement a Network Intrusion Detection System (NIDS) using a Co
 
 
 CNN deep learning model creation using the Kera API functions:
-\lstinputlisting[language=Python, caption={CNN Model Code}]{listings/CNN_model.py}
+\lstinputlisting[language=Python, caption={CNN Model creation}]{listings/CNN_model.py}
 
 \firmlist
 \begin{itemize}
@@ -499,13 +499,13 @@ We also get a summary of the created model. This summary describes the arrangeme
 The next step is starting the model training with 30 epochs, 32 batch sizes, and the validation data, which is the test data we split from the original dataset earlier.
 
 
-\lstinputlisting[language=Python]{listings/CNN_training.py}
+\lstinputlisting[language=Python, caption={Start the CNN model training}]{listings/CNN_training.py}
 
 
 After the training process is finished, we can use the Keras save() function to save our train model into a .keras file for later use, so we can reuse our model without having to train it each time.
 
 
-\lstinputlisting[language=Python]{listings/CNN_save_load_model.py}
+\lstinputlisting[language=Python, caption={Saving the CNN model}]{listings/CNN_save_load_model.py}
 
 
 %here we add the saving the model
@@ -539,9 +539,9 @@ After the training process is finished, we can use the Keras save() function to 
 % say something
 The LSTM model implementation is very similar to the CNN implementation, with only a few challenges. Those changes being that CNN uses the Conv1D() function to create its one-dimensional convolutional layer, while LSTM uses the LSTM() function to add its layers.
 
-\lstinputlisting[language=Python]{listings/LSTM_model.py}
+\lstinputlisting[language=Python, caption={LSTM model code}]{listings/LSTM_model.py}
 And after the model training is finished, we save the model for later loading and usage.
-\lstinputlisting[language=Python]{listings/LSTM_save_load_model.py}
+\lstinputlisting[language=Python, caption={Saving the LSTM model}]{listings/LSTM_save_load_model.py}
 \newpage
 
 We get a model summary for the LSTM model as well.
@@ -574,7 +574,7 @@ The metrics used for the evaluation are primarily accuracy, but there are also s
 	\item Accuracy: Accuracy is a measure of the overall correctitude of predictions made by models. It can be calculated as (TP+TN)/(TP+TN+FP+FN). The accuracy metric is deceptive especially in cases where datasets are not balanced.
 	\item precision: Precision on the other hand measures the rate of true positives among all positive predictions that the model makes. Precision can be expressed as TP/(TP+FP). Precision comes in handy when wrong positive consequences could have serious implications, for example spam detection effort.
 	\item F1-score: F1 score is harmonic mean of precision and recall and ranges between 0 to 1 whereby 1 means best. F1 Score provides balance between recall and precision. This may be given as 2*(Precision*Recall)/(Precision + Recall).
-	\item confucsion matrix: A confusion matrix is a table that summarizes how well a classifier performed in classification tasks. In one axis there are actual values while on another predicted values are found. These cells consists of True Positives(TP), True Negatives(TN), False Positives(FP) and False negatives (FN).
+	%\item confucsion matrix: A confusion matrix is a table that summarizes how well a classifier performed in classification tasks. In one axis there are actual values while on another predicted values are found. These cells consists of True Positives(TP), True Negatives(TN), False Positives(FP) and False negatives (FN).
 \end{itemize}
 
 
@@ -592,9 +592,24 @@ The metrics used for the evaluation are primarily accuracy, but there are also s
 evaluating the CNN model with the test data:
 \firmlist
 		\begin{itemize}
-			\item accuracy: 99.64\%
-			\item loss: 1.56\%
+			\item accuracy:
+				\begin{itemize}
+					\item Training accuracy: 99.6\%
+					\item Validation accuracy: 98.17\%
+				\end{itemize}
+			\item loss:
+				\begin{itemize}
+					\item Training loss: 1.54\%
+					\item Validation loss: 7.05\%
+				\end{itemize}
 		\end{itemize}
+
+
+		
+		\lstinputlisting[language={}, caption={CNN multilabel classification report}]{listings/CNN_report.txt}
+
+
+
 		\newpage
 		% add recall precsition and f1-score
 		% add confucsion matrix
@@ -603,18 +618,37 @@ evaluating the CNN model with the test data:
 		% show 3 last epochs 
 		% show 2 graphs
 
-		\begin{figure}[h]
+
+		\begin{figure}[t]
 			\centering
-			\includegraphics[width=400px]{figures/CNN_training_validation.png}
-			\caption{Accuracy graph}
-			\label{fig:aa}
+			\begin{minipage}{0.4\textwidth}
+			  \centering
+			  \includegraphics[width=1\textwidth]{figures/CNN_training_validation.png}
+			  \caption{CNN Accuracy graph}
+			  \label{fig:1}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.4\textwidth}
+			  \centering
+			  \includegraphics[width=1\textwidth]{figures/CNN_training_validation_loss.png}
+			  \caption{CNN Loss graph}
+			  \label{fig:2}
+			\end{minipage}
 		\end{figure}
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=400px]{figures/CNN_training_validation_loss.png}
-			\caption{Loss graph}
-			\label{fig:ff}
-		\end{figure}
+
+
+		%\begin{figure}[h]
+		%	\centering
+		%	\includegraphics[width=400px]{figures/CNN_training_validation.png}
+		%	\caption{Accuracy graph}
+		%	\label{fig:aa}
+		%\end{figure}
+		%\begin{figure}[h]
+		%	\centering
+		%	\includegraphics[width=400px]{figures/CNN_training_validation_loss.png}
+		%	\caption{Loss graph}
+		%	\label{fig:ff}
+		%\end{figure}
 		
 
 
@@ -624,10 +658,19 @@ evaluating the CNN model with the test data:
 evaluating the LSTM model with the test data:
 \firmlist
 		\begin{itemize}
-			\item accuracy: 99.66\%
-			\item loss: 1.45\%
+			\item accuracy:
+				\begin{itemize}
+					\item Training accuracy: 99.6\%
+					\item Validation accuracy: 99.65\%
+				\end{itemize}
+			\item loss:
+				\begin{itemize}
+					\item Training loss: 1.72\%
+					\item Validation loss: 1.48\%
+				\end{itemize}
 		\end{itemize}
-
+		\lstinputlisting[language={}, caption={LSTM multilabel classification report}]{listings/LSTM_report.txt}
+		
 		% add recall precsition and f1-score
 		% add confucsion matrix
 		% images
@@ -635,27 +678,48 @@ evaluating the LSTM model with the test data:
 		% show 3 last epochs 
 		% show 2 graphs
 
-		\begin{figure}[h]
+
+		\begin{figure}[t]
 			\centering
-			\includegraphics[width=400px]{figures/LSTM_training_validation.png}
-			\caption{Accuracy graph}
-			\label{fig:aa}
-		\end{figure}
-% to avoide funky layout
-\newpage
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=400px]{figures/LSTM_training_validation_loss.png}
-			\caption{Loss graph}
-			\label{fig:ff}
-		\end{figure}
+			\begin{minipage}{0.49\textwidth}
+			  \centering
+			  \includegraphics[width=1\textwidth]{figures/LSTM_training_validation.png}
+			  \caption{LSTM Accuracy graph}
+			  \label{fig:1}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.49\textwidth}
+			  \centering
+			  \includegraphics[width=1\textwidth]{figures/LSTM_training_validation_loss.png}
+			  \caption{LSTM Loss graph}
+			  \label{fig:2}
+			\end{minipage}
+		  \end{figure}
+		  
+		  \newpage
+
+%
+%		\begin{figure}[h]
+%			\centering
+%			\includegraphics[width=400px]{figures/LSTM_training_validation.png}
+%			\caption{Accuracy graph}
+%			\label{fig:aa}
+%		\end{figure}
+%% to avoide funky layout
+%\newpage
+%		\begin{figure}[h]
+%			\centering
+%			\includegraphics[width=400px]{figures/LSTM_training_validation_loss.png}
+%			\caption{Loss graph}
+%			\label{fig:ff}
+%		\end{figure}
 		
 
 
 
 
-
-\paragraph{Observation}: We notice that the accuracy and the loss rates are almost matched between the CNN and the LSTM models. However according the validation accuracy compared to the number of epochs, the LSTM provides better accuracy over a wide rande of epochs(10 to 12 and 25 to30) unlike CNN which provides it's best accuracy over a narrow range of epochs(3 to 7 and 12 to 30).
+% fix me between ()
+\paragraph{Observation}: We notice that the accuracy and loss rates between the CNN and the LSTM models were better, but only with a slight difference. We also notice that CNN also takes more epochs to reach its maximum performance. Also,  according to the validation accuracy compared to the number of epochs, the LSTM provides better accuracy over a wider range of epochs, while CNN provides its best accuracy over a narrower range of epochs.
 
 		
 

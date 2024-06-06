@@ -1,0 +1,14 @@
+                          precision    recall  f1-score   support
+
+                  Benign       0.89      0.98      0.94      1947
+        DDOS attack-HOIC       0.99      0.89      0.94      1942
+    DDOS attack-LOIC-UDP       1.00      1.00      1.00      1999
+  DDoS attacks-LOIC-HTTP       0.98      0.99      0.99      2122
+   DoS attacks-GoldenEye       1.00      1.00      1.00      2066
+        DoS attacks-Hulk       1.00      1.00      1.00      1933
+DoS attacks-SlowHTTPTest       1.00      1.00      1.00      2004
+   DoS attacks-Slowloris       1.00      0.99      0.99      1987
+
+                accuracy                           0.98     16000
+               macro avg       0.98      0.98      0.98     16000
+            weighted avg       0.98      0.98      0.98     16000
