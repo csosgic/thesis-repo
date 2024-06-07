@@ -22,8 +22,8 @@ In this chapter, we present our contributions towards the deep learning-based in
 \section{Theoretical Proposal}
 
 \subsection{Project Description}
-the proposed system for the project is a network intrusion detection system based on deep learning that will depend on either CNN or LSTM as a learning algorithme. This project mainly aims at designing and implementing said system that can detect cyber threats in Smart Grid Communication Infrastructure effectively.To capture both spatial and temporal features of network traffic data, the proposed system will use either CNN or LSTM architectures to identify complex and sophisticated attack patterns that would threaten the smart grid functionality.
-Our deep learning based network intrusion detection system will be mainly focused on denial of service attacks (DoS) and distributed denial of service attacks (DDoS).
+The proposed system for the project is a network intrusion detection system based on deep learning that will depend on either CNN or LSTM models. This project mainly aims at designing and implementing a system that can detect cyber threats in smart grid communication infrastructure effectively. To capture both spatial and temporal features of network traffic data, the proposed system will use either CNN or LSTM architectures to identify complex and sophisticated attack patterns that would threaten the smart grid functionality.
+Our deep learning-based network intrusion detection system will be mainly focused on denial of service attacks (DoS) and distributed denial of service attacks (DDoS).
 
 \subsection{Project Design and architecture}
 Building any machine learning or deep learning model usually involves several important steps, as shown in Figure  \ref{fig:DL-creation}.
@@ -56,7 +56,11 @@ The next and final step is the validation step, in which we get the prediction r
 
 
 \subsection{Deep learning Models architecture}
-Detecting cyber threats to the smart grid functionality and safety is crucial a task which needs high accuryacy of detection that's why we opted to  we choose two deep learning algorithms for intrusion detection which are CNN and LSTM
+Detecting cyber threats to the smart grid's functionality and safety is a crucial task that requires high detection accuracy. That's why we opted to use two deep learning algorithms for intrusion detection, which are CNN and LSTM.
+
+
+
+
 
 
 
@@ -70,8 +74,13 @@ Detecting cyber threats to the smart grid functionality and safety is crucial a 
 
 \subsubsection{CNN model}
 Convolutional Neural Networks (CNNs) are a highly-specific deep learning algorithm meant to analyze spatialy structured input data, like images and grid structured data. These are derived from the visual cortex of human beings and are good at image recognition, object detection and image segmentation among others. CNNs work by carrying out convolutional layers in order to capture local characteristics, pooling layers in order to reduce spatial dimensions and fully connected layers for predictions. They can be trained on labeled data and have proved very effective in several applications like face recognition, medical imaging analysis as well as self-driving cars.\cite{CNN}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=400px]{figures/Typical_cnn.png}
+	\caption{CNN architecture \cite{CNN-architecture}}
+	\label{fig:CNN-test}
+\end{figure}
 
-Note: will expande on this later
 
 % add graph
 %talk about layers maybe
@@ -95,18 +104,28 @@ Note: will expande on this later
 Long Short-Term Memory (LSTM) is a type of Recurrent Neural Network (RNN) that was developed by Hochreiter and Schmidhuber; LSTM is different from RNNs because it can forecast sequences and study long-term dependency patterns from the provided data. What makes LSTMs unique is their ability to learn order dependency patterns which is critical in solving complex problems like speech recognition and machine translation.
 LSTM address the weakness of traditional RNN which is the unability to learn any long term patterns which it solves by introducing a memory cell, LSTM is controlled with Three gates control: input gate, forget gate, output gate.These gates determine what information to add, remove, and output from the memory cell and hence enable LSTM networks to learn long-term dependency patterns. \cite{lstm}
 
-Note: will expande on this later
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=300px]{figures/LSTM_Cell_edited.png}
+	\caption{LSTM architecture \cite{LSTM-architecture}}
+	\label{fig:LSTM-test}
+\end{figure}
 
 % add graph
 %talk about layers maybe
 
 
+%\subsubsection{CNN and LSTM comparison}
+%both Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) have unique advantages and disadvantes, and each of them is well suited to a certain use case, that's why we will be comparing those two models to better understand which one is better suited for a network intrusion detection system.
 
 
 
 
 
 
+
+\newpage
 
 
 
@@ -211,12 +230,10 @@ Note: will expande on this later
 
 \subsection{Development tools used}
 \subsubsection{Development environment}
-training deep learning models requires a high performance PC due to the fact that these models require high computational resources to process large datasets and intricate neural networks.  With complex calculations and huge amounts of data. One of the reasons why having a powerful PC with a powerful GPU is important during the training process is that it can significantly shorten the time needed for the training, as well as reduce computational resources. a sufficient quantity of memory (RAM) is also needed to load big datasets, and fast storage devices like SSDs are vital in handling data-intensive nature of deep learning tasks.
+training deep learning models requires a high performance PC due to the fact that these models require high computational resources to process large datasets and intricate neural networks.  With complex calculations and huge amounts of data. One of the reasons why having a powerful PC with a powerful GPU is important during the training process is that it can significantly shorten the time needed for the training, as well as reduce computational resources. a sufficient quantity of memory (RAM) is also needed to load big datasets, and fast storage devices like SSDs are vital in handling data-intensive nature of deep learning tasks. That's why we will be using google colab which has a good selection of hardware for AI training with a top of the line Tesla T4 GPU with 16 GB of VRAM alongside 12 GB of ram and 78GB of disk space.
 
 
-
-
-
+We will be using two following software for the model's development
 \begin{itemize}
 	\item jupyter notebook: is an open source web application or a vscode extension that facilitates the creation and sharing of segmented documents that contains blocks of interactive code, text and data visualations, it is mostly used for data science, machine learning and scientific computing, it supports a wide range of programming languages like python, R, scala and julia, it can also display some text formats like markdown, Latex and HTML.
 	\item VScode: Visual Studio Code (VS Code) is an open-source source-code editor developed by Microsoft for Windows, Linux, macOS, and web browsers. It is a popular choice among developers due to its extensive features like code highlighting, debugging, code completion, and the ability to extend its original functionality with 3rd-party extensions and extensibility. It also offers Git integration out of the box.
@@ -243,10 +260,11 @@ libraries that are used for the development:
 	\item Matplotlib: Matplotlib is a 2D plotting library for Python which can produce publication quality plots, used in application development, interactive scripting and image creation on all operating system and user interface platforms. The author of Matplotlib John D. Hunter began using Python in 2001 and was initially frustrated at the lack of a powerful graphics environment like MATLAB's. He then developed Matplotlib to satisfy his needs, focusing initially on embedding it in a GUI for his ECoG application and then gradually adding support for other features like high-quality raster and vector output, support for mathematical expressions, and interactive use from the shell.\cite{plot}
 
 
-	\item Seaborn: Seaborn is a python library for making statistical graphics, Seaborn is a high-level interface to Matplotlib and compatible with Pandas's data structures. Seaborn can provide the data with a dataset alongside plot specifications and automatically maps the values onto visual attributes such as color, size or style; internally seaborn performs the relevant statistical transformations and finally adds axis labels as well as legends for the plots. Many Seaborn functions can generate multi-panel figures for comparing different subsets of data or variable pairings within a dataset. By allowing quick prototyping and exploratory analysis of data in single-function calls with just a few arguments, Seaborn can be used throughout the scientific project cycle.  \cite{seaborn}
-		
+	\item Seaborn: Seaborn is a python library for making statistical graphics, Seaborn is a high-level interface to Matplotlib and compatible with Pandas's data structures. Many Seaborn functions can generate multi-panel figures for comparing different subsets of data or variable pairings within a dataset. By allowing quick prototyping and exploratory analysis of data in single-function calls with just a few arguments, Seaborn can be used throughout the scientific project cycle.  \cite{seaborn}
+	%\item Seaborn: Seaborn is a python library for making statistical graphics, Seaborn is a high-level interface to Matplotlib and compatible with Pandas's data structures. Seaborn can provide the data with a dataset alongside plot specifications and automatically maps the values onto visual attributes such as color, size or style; internally seaborn performs the relevant statistical transformations and finally adds axis labels as well as legends for the plots. Many Seaborn functions can generate multi-panel figures for comparing different subsets of data or variable pairings within a dataset. By allowing quick prototyping and exploratory analysis of data in single-function calls with just a few arguments, Seaborn can be used throughout the scientific project cycle.  \cite{seaborn}
 
-	\item scikit-learn: Sckit-learn is a Python library that provides various machine learning algorithms for medium-scale supervised and unsupervised problems. It focuses on making things easy, having good performance, documentation and remaining consistent in it's APIs. Scikit-learn depends on scientific Python ecosystem libraries such as NumPy and SciPy, and uses Cython to blend C/C++ with Python for improved performance. This lightweight software has few requirements and can be obtained by anyone without any major legal challenges since it is distributed under a simplified BSD license. It provides solid implementations of Machine Learning algorithms, documentation and community driven development, scikit-learn also includes some nice implementations of different algorithms outperforming other popular python ML libraries in many instances including SVMs, Lasso, Elastic Net, k-Nearest Neighbors, PCA, k-Means and some other algorithms.\cite{scikit-learn}
+	\item scikit-learn: Sckit-learn is a Python library that provides various machine learning algorithms for medium-scale supervised and unsupervised problems. It focuses on making things easy, having good performance, documentation and remaining consistent in it's APIs. Scikit-learn depends on scientific Python ecosystem libraries such as NumPy and SciPy, and uses Cython to blend C/C++ with Python for improved performance. it is distributed under a simplified BSD license.\cite{scikit-learn}
+	%\item scikit-learn: Sckit-learn is a Python library that provides various machine learning algorithms for medium-scale supervised and unsupervised problems. It focuses on making things easy, having good performance, documentation and remaining consistent in it's APIs. Scikit-learn depends on scientific Python ecosystem libraries such as NumPy and SciPy, and uses Cython to blend C/C++ with Python for improved performance. This lightweight software has few requirements and can be obtained by anyone without any major legal challenges since it is distributed under a simplified BSD license. It provides solid implementations of Machine Learning algorithms, documentation and community driven development, scikit-learn also includes some nice implementations of different algorithms outperforming other popular python ML libraries in many instances including SVMs, Lasso, Elastic Net, k-Nearest Neighbors, PCA, k-Means and some other algorithms.\cite{scikit-learn}
 
 
 	\item TensorFlow: TensorFlow is a free and open-source software library for machine learning and artificial intelligence. It gives you more flexibility and control the some of the other machine learning frameworks with features such as the Keras Functional API and the Sub-Classification API model to build complex neural network topologies. it offers fast execution for fast debugging and simple prototyping.\cite{tf}
@@ -310,10 +328,13 @@ First, we load the data with the Pandas library, and since our dataset is split 
 
 The total amount of data loaded is about 11 million rows with 80 columns, all of which are either benign or DoS/DDoS traffic, with a total size of 6.6 GB.
 
+\newpage
+
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=400px]{figures/data_example.png}
-	\caption{data sample}
+	\caption{Imported data sample}
 	\label{fig:datasample}
 \end{figure}
 
@@ -322,7 +343,7 @@ As we can see in Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=400px]{figures/unbalanced_data.png}
-	\caption{Bar graph pf the unbalanced dataset}
+	\caption{Bar graph of the unbalanced dataset}
 	\label{fig:unbalanced_data}
 \end{figure}
 
@@ -332,7 +353,6 @@ As we can see in Figure \ref{fig:unbalanced_data} and Table \ref{tab:unbalanced_
 	\input{tables/unbalanced_data}
 	\label{tab:unbalanced_data_table} 
 \end{table}
-
 
 \newpage
 
@@ -387,13 +407,13 @@ As we have stated before in Section \ref{Dataset}, our dataset is unbalanced in 
 % change to pie and change colors
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=250px]{figures/unbalanced_donut.png}
+	\includegraphics[width=350px]{figures/unbalanced_donut.png}
 	\caption{Before data augmentation}
 	\label{fig:datasample}
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=250px]{figures/balanced_donut.png}
+	\includegraphics[width=350px]{figures/balanced_donut.png}
 	\caption{After data augmentation}
 	\label{fig:datasample}
 \end{figure}
